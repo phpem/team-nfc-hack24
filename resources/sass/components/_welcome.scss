@@ -1,16 +1,67 @@
 .welcome {
     &__title {
-        @include center-both;
-        color: #fff;
+        color: $site-white;
         font-size: 60px;
         font-weight: $font-weight-light;
         text-align: center;
         width: 100%;
+
+        margin-bottom: $default-padding;
+        margin-top: $default-padding;
         @media #{$medium-up} {
+            margin-bottom: $default-padding * 2;
+            margin-top: $default-padding * 2;
             font-size: 80px;
         }
         @media #{$large-up} {
+            margin-bottom: $default-padding * 3;
+            margin-top: $default-padding * 3;
             font-size: 120px;
+        }
+    }
+    &__panel {
+        background-color: lighten(#1e2f38, 5%);
+        padding: $default-padding;
+        margin-bottom: $default-padding;
+        &-title {
+            color: $site-white;
+            font-weight: $font-weight-light;
+            margin-bottom: 10px;
+            font-size: 60px;
+            i {
+                font-size: 30px;
+                margin-left: 10px;
+                line-height: 60px;
+                float: right;
+                margin-right: 10px;
+            }
+        }
+        &-copy {
+            color: $site-white;
+            font-weight: $font-weight-light;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__signup {
+        margin-top: $default-padding;
+
+        &--upper {
+            margin-bottom: $default-padding * 2;
+            @media #{$large-up} {
+                display: none;
+            }
+        }
+
+        &--lower {
+            display: none;
+            @media #{$large-up} {
+                display: block;
+            }
+        }
+        .button {
+            width: 100%;
         }
     }
 }

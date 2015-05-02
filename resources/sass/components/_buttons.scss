@@ -1,0 +1,17 @@
+.button {
+    padding: 15px 40px;
+    font-size: 16px;
+    color: $site-white;
+    &--action {
+        background-color: #f1c40f;
+        &:hover {
+            background-color: darken(#f1c40f, 10%);
+        }
+    }
+    &--success {
+        background-color: #16a085;
+        &:hover {
+            background-color: darken(#16a085, 10%);
+        }
+    }
+}
