@@ -1,5 +1,6 @@
 @import "../settings/global"; // import the settings for this 'component'
 
 body {
-    background-color: #fff;
+    background: transparent url(../images/mainbg.jpg) center center no-repeat;
+    background-size: cover;
 }

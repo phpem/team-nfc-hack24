@@ -1,0 +1,10 @@
+.welcome {
+    &__title {
+        @include center-both;
+        color: #fff;
+        font-size: 120px;
+        font-weight: $font-weight-light;
+        text-align: center;
+        width: 100%;
+    }
+}

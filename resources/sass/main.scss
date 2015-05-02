@@ -11,18 +11,23 @@
     Add or remove them as you need.
 */
 @import
-    "lib/foundation/scss/foundation/components/buttons",
-    "lib/foundation/scss/foundation/components/grid",
-    "lib/foundation/scss/foundation/components/type",
-    "lib/foundation/scss/foundation/components/visibility";
+    "foundation/components/buttons",
+    "foundation/components/grid",
+    "foundation/components/type",
+    "foundation/components/visibility";
+
+$lato-font-path: '../fonts';
+
+@import "lato";
 
 /*
     Here are our own components.
  */
 @import "components/mixins";
-@import "components/global";
 @import "components/fonts";
+@import "components/global";
 @import "components/grid";
+@import "components/welcome";
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
