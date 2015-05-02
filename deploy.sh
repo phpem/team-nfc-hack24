@@ -5,3 +5,5 @@ npm install
 #bower install
 #bundle install
 gulp --prod
+chmod 777 storage
+chmod 777 storage/logs
