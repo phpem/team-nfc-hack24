@@ -77,7 +77,7 @@ class DatabaseSeeder extends Seeder {
         $this->insertVotes($userID, $teamID);
 
 
-        $userID = DB::table('users')->insertGetId(['email' => 'adoni@team-nfc', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Adoni', 'last_name' => 'Pavlakis', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'adoni@team-nfc.co.uk', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Adoni', 'last_name' => 'Pavlakis', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
