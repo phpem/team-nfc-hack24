@@ -29,7 +29,7 @@ class TeamUsersEntity extends EntityAbstract {
         $data = array_merge($vars, $data);
 
         return new self(
-            $data['id'], $data['team_name'], $data['org_id'],
+            $data['team_id'], $data['user_id'], $data['is_manager'],
             $data['created_at'], $data['updated_at']
         );
     }
