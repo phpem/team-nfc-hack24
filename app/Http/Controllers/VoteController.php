@@ -34,9 +34,12 @@ final class VoteController extends Controller {
     public function rateManager(Authenticatable $user, $rating)
     {
 
+        $teams = $this->usersRepository->getTeamsForUser($user);
+
         return view(
             'vote/rateManager',
             [
+                'teams'  => $teams,
                 'user'   => $user,
                 'rating' => $rating
             ]);
