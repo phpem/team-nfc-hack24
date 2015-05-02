@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace Teamnfc\Services;
 
-use App\User;
+use Teamnfc\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

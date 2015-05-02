@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace Teamnfc\Events;
 
 abstract class Event {
 
