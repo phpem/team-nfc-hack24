@@ -37,7 +37,7 @@ var fontsOutputPath = publicBasePath + 'fonts/';
 // Export our config object
 module.exports = {
     isDevelopment: isDevelopment,
-    siteUrl: 'http://front-end.dev', // change this to match the site URL you use in development
+    siteUrl: 'http://team-nfc.dev', // change this to match the site URL you use in development
     paths: {
         bower: bowerDirectory,
 
@@ -62,8 +62,8 @@ module.exports = {
         bundleExec: true,
         loadPath: [
             sassSourcePath,
-            config.paths.bower + 'foundation/scss/',
-            config.paths.bower + 'components-font-awesome/scss/',
+            bowerDirectory + 'foundation/scss/',
+            bowerDirectory + 'components-font-awesome/scss/',
 
         ],
         style: sassStyle,
