@@ -1,6 +1,6 @@
 <?php
 
-use Teamnfc\User\UserEntity;
+use Teamnfc\Entity\UserEntity;
 use Teamnfc\Entity\EntityFactory;
 
 class TestEntityFactory extends TestCase {
@@ -17,10 +17,10 @@ class TestEntityFactory extends TestCase {
             'last_name'     => ''
         ];
 
-        $userEntity = EntityFactory::get('Teamnfc\\User\\UserEntity', $data);
+        $userEntity = EntityFactory::get('UserEntity', $data);
 
         //print_r($userEntity);
-        $this->assertInstanceOf('Teamnfc\\User\\UserEntity', $userEntity);
+        $this->assertInstanceOf('Teamnfc\Entity\UserEntity', $userEntity);
     }
 
     /**
@@ -28,6 +28,6 @@ class TestEntityFactory extends TestCase {
      */
     public function testEntityNotFoundThrowsException()
     {
-        $userEntity = EntityFactory::get('Teamnfc\\User\\FakeStuFF', []);
+        $userEntity = EntityFactory::get('FakeStuFF', []);
     }
 }
