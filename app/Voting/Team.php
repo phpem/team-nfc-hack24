@@ -57,7 +57,7 @@ class Team {
             }
         }
 
-        $this->users = $this->getUsersByIds($userIDs);
+        $this->users = $this->getUsersByIds(implode(',',$userIDs));
         $this->manager = $this->getManagerById($managerID);
     }
 
