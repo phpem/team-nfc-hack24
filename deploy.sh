@@ -12,5 +12,5 @@ bower install --no-interactive --allow-root
 bundle install
 gulp setup
 gulp --prod
-chmod 777 storage/*
-chmod 666 storage/*/*
+find storage -type d -exec chmod 0777 {} \;
+find storage -type f -exec chmod 0666 {} \;
