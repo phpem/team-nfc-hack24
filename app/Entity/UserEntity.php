@@ -1,6 +1,6 @@
 <?php
 
-namespace Teamnfc\User;
+namespace Teamnfc\Entity;
 
 use Teamnfc\Entity\EntityAbstract;
 use Teamnfc\Entity\EntityFactory;

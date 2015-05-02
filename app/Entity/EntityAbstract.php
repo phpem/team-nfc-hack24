@@ -5,5 +5,5 @@ namespace Teamnfc\Entity;
 
 abstract class EntityAbstract {
 
-   abstract public function populate (array $data = []);
+   abstract public static function populate (array $data = []);
 }

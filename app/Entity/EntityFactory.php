@@ -13,6 +13,9 @@ class EntityFactory
      */
     public static function get($entityName, $data)
     {
+        $namespace = '\\Teamnfc\\Entity\\';
+        $entityName = $namespace . $entityName;
+
         if (!class_exists($entityName)) {
             throw new \Exception("Wrong entity requested: { " . $entityName . " }");
         }
