@@ -21,30 +21,22 @@
             <div class="welcome__panel" data-equalizer-watch>
                 <h1 class="welcome__panel-title">Vote <i class="fa fa-check"></i></h1>
 
-                <p class="welcome__panel-copy">Cupidatat reprehenderit do est aute. Consectetur aliqua ipsum incididunt
-                    aute amet aliquip eu ipsum reprehenderit. Proident ut minim minim labore laboris laborum esse
-                    excepteur incididunt enim irure voluptate.</p>
+                <p class="welcome__panel-copy">Vote for your managers and team leaders based on a number of criteria. We use an aggregate of collaborative mindshare to score leaders based on your votes in omni-channel criteria.</p>
             </div>
         </div>
         <div class="small-12 medium-12 large-4 columns">
             <div class="welcome__panel" data-equalizer-watch>
                 <h1 class="welcome__panel-title">See <i class="fa fa-search"></i></h1>
 
-                <p class="welcome__panel-copy">Cupidatat reprehenderit do est aute. Consectetur aliqua ipsum incididunt
-                    aute amet aliquip eu ipsum reprehenderit. Proident ut minim minim labore laboris laborum esse
-                    excepteur incididunt enim irure voluptate.</p>
-                <p class="welcome__panel-copy">Cupidatat reprehenderit do est aute. Consectetur aliqua ipsum incididunt
-                    aute amet aliquip eu ipsum reprehenderit. Proident ut minim minim labore laboris laborum esse
-                    excepteur incididunt enim irure voluptate.</p>
+                <p class="welcome__panel-copy">Using our matrix of integrated users and synergistic data, you can see the stats on managers as part of their profile.</p>
             </div>
         </div>
         <div class="small-12 medium-12 large-4 columns">
             <div class="welcome__panel" data-equalizer-watch>
                 <h1 class="welcome__panel-title">Decide <i class="fa fa-thumbs-o-up"></i></h1>
 
-                <p class="welcome__panel-copy">Cupidatat reprehenderit do est aute. Consectetur aliqua ipsum incididunt
-                    aute amet aliquip eu ipsum reprehenderit. Proident ut minim minim labore laboris laborum esse
-                    excepteur incididunt enim irure voluptate.</p>
+                <p class="welcome__panel-copy">Using our hyperpersonal system, you can make organic decisions on how to grow synergistic platforms and decide on your next career move.</p>
+                <p class="welcome__panel-copy">Are they worth it? Find out!</p>
             </div>
         </div>
     </div>
