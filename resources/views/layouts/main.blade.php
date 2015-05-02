@@ -6,7 +6,13 @@
 </head>
 <body>
     @yield('content')
-<script src="js/main.min.js"></script>
+
+    <footer>
+        <div class="footer__team-list">
+            Team NFC is: <a href="http://twitter.com/TheMattBrunt">@TheMattBrunt</a> <a href="http://twitter.com/tdc_hodgy">@tdc_hodgy</a> <a href="http://twitter.com/Pavlakis">@Pavlakis</a> <a href="http://twitter.com/gazj">@gazj</a>
+        </div>
+    </footer>
+    <script src="js/main.min.js"></script>
     <script>
         $(document).ready(function() {
             $(document).foundation();
