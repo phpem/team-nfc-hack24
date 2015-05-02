@@ -1,12 +1,18 @@
-@extends('app')
+@extends('layouts.main')
+
+@section('meta-title')
+    Forgotten Password | Team NFC
+@endsection
+
+@section('page-title')
+    Password Reset
+@endsection
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Reset Password</div>
-				<div class="panel-body">
+    <div class="row">
+        <div class="small-12 medium-8 large-6 columns medium-push-2 large-push-3">
+            <div class="panel panel--login">
+                <div class="panel__body">
 					@if (session('status'))
 						<div class="alert alert-success">
 							{{ session('status') }}
@@ -14,7 +20,7 @@
 					@endif
 
 					@if (count($errors) > 0)
-						<div class="alert alert-danger">
+						<div class="panel__alerts panelt__alerts--danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
@@ -24,23 +30,14 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
+					<form class="form form--forgotten" role="form" method="POST" action="{{ url('/password/email') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<label class="form__label">E-Mail Address</label>
+                        <input type="email" class="form__field" name="email" value="{{ old('email') }}" placeholder="me@email.com">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Send Password Reset Link
-								</button>
-							</div>
-						</div>
+                        <button type="submit" class="button button--success button--submit">
+                            Reset Password
+                        </button>
 					</form>
 				</div>
 			</div>

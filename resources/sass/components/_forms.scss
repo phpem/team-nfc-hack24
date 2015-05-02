@@ -1,0 +1,56 @@
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date] {
+    background-color: lighten(#273d49, 10%);
+    border: 0;
+    font-size: 16px;
+    color: $site-white;
+    padding: 10px;
+    margin-bottom: $default-padding / 2;
+    font-weight: $font-weight-light;
+    font-family: $main-font-family;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+input[type=submit],
+form .button--submit {
+    width: 100%;
+    display: block;
+}
+
+.form {
+    &__label {
+        display: block;
+        margin-bottom: 3px;
+    }
+    &__field {
+        width: 100%;
+        display: block;
+    }
+    &__checkbox {
+        margin-bottom: $default-padding / 2;
+        display: block;
+    }
+    &__footer-link {
+        color: darken($site-white, 20%);
+        margin-top: $default-padding;
+        display: inline-block;
+        &:hover {
+            color: darken($site-white, 20%);
+            text-decoration: underline;
+        }
+    }
+    button, .button {
+        margin-bottom: 0;
+        margin-top: $default-padding;
+    }
+}
+
+form label.checkbox {
+    margin-bottom: $default-padding / 2;
+    display: block;
+}

@@ -19,31 +19,6 @@
             font-size: 120px;
         }
     }
-    &__panel {
-        background-color: lighten(#1e2f38, 5%);
-        padding: $default-padding;
-        margin-bottom: $default-padding;
-        &-title {
-            color: $site-white;
-            font-weight: $font-weight-light;
-            margin-bottom: 10px;
-            font-size: 60px;
-            i {
-                font-size: 30px;
-                margin-left: 10px;
-                line-height: 60px;
-                float: right;
-                margin-right: 10px;
-            }
-        }
-        &-copy {
-            color: $site-white;
-            font-weight: $font-weight-light;
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
     &__signup {
         margin-top: $default-padding;
 

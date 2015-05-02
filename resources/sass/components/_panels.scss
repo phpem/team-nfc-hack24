@@ -1,0 +1,26 @@
+.panel {
+    font-weight: $font-weight-light;
+    background-color: lighten(#1e2f38, 5%);
+    padding: $default-padding;
+    margin-bottom: $default-padding;
+    &__title {
+        color: $site-white;
+        font-weight: $font-weight-light;
+        margin-bottom: 10px;
+        font-size: 50px;
+        i {
+            font-size: 30px;
+            margin-left: 10px;
+            line-height: 60px;
+            float: right;
+            margin-right: 10px;
+        }
+    }
+    &__copy {
+        color: $site-white;
+        font-weight: $font-weight-light;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

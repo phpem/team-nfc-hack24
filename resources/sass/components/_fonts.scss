@@ -4,12 +4,13 @@ $font-weight-semibold: 600;
 $font-weight-bold: 700;
 $font-weight-extrabold: 900;
 
+$main-font-family: "Lato", Arial, sans-serif;
 body,
 p, ul, ol,
 blockquote,
 div, span,
 h1, h2, h3, h4, h5 {
-    font-family: "Lato", Arial, sans-serif;
+    font-family: $main-font-family;
 }
 
 body,
