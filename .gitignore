@@ -1,3 +1,30 @@
 /vendor
 /node_modules
 .env
+
+# Auto generated asset files
+/public/css/*
+/public/js/*
+/public/fonts/*
+
+# Caches
+.sass-cache
+
+# Node Files
+/node_modules
+
+# npm logs
+npm-debug.log
+
+# Bower Files
+/bower_components
+
+# IDE files etc
+/.idea
+/.vagrant
+.dashbrew
+.project
+.tmp*
+.DS_*
+.DS_Store
+.settings/*
