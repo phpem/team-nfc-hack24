@@ -37,6 +37,14 @@ Route::get(
         'uses'       => 'AccountController@index'
 	]
 );
+
+Route::get(
+    'account/teams',
+    [
+        'middleware' => 'auth',
+        'uses'       => 'AccountController@teams'
+    ]
+);
 Route::get(
     'search',
     [
