@@ -33,4 +33,9 @@ class TeamUsersEntity extends EntityAbstract {
             $data['created_at'], $data['updated_at']
         );
     }
+
+    public function isManager()
+    {
+        return (bool)$this->is_manager;
+    }
 }
