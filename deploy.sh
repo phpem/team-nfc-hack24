@@ -8,7 +8,7 @@ php artisan migrate --no-interaction
 php artisan db:seed --no-interaction
 
 npm install
-bower install --allow-root
+bower install --no-interactive --allow-root
 bundle install
 gulp setup
 gulp --prod
