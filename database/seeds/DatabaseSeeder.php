@@ -49,18 +49,18 @@ class DatabaseSeeder extends Seeder {
                     DB::table('users')->insert(['email' => $faker->email, 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => $faker->firstName, 'last_name' => $faker->lastName, 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
                     DB::table('team_users')->insert(['team_id' => $currentTeam, 'user_id' => $currentUser, 'is_manager' => $isManager, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
-                    // do the voting
-                    $voteAmount = $faker->numberBetween(1, 7);
-                    $criteria = array(1, 2, 3, 4, 5, 6, 7);
-                    foreach ($faker->randomElements($criteria, $voteAmount) as $criterion)
-                    {
-                        $score = $faker->numberBetween(1, 5);
-                        DB::table('votes')->insert(['criteria_id' => $criterion, 'score' => $score, 'team_id' => $currentTeam, 'user_id' => $currentUser, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+                    // do the voting if not a manager for the team
+                    if(!$isManager) {
+                        $voteAmount = $faker->numberBetween(1, 7);
+                        $criteria = array(1, 2, 3, 4, 5, 6, 7);
+                        foreach ($faker->randomElements($criteria, $voteAmount) as $criterion) {
+                            $score = $faker->numberBetween(1, 5);
+                            DB::table('votes')->insert(['criteria_id' => $criterion, 'score' => $score, 'team_id' => $currentTeam, 'user_id' => $currentUser, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+                        }
                     }
-
+                    $isManager = 0;
                     $currentUser ++;
                 }
-
                 $currentTeam ++;
             }
         }
