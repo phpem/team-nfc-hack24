@@ -28,7 +28,7 @@ class CreateTeamUsers extends Migration {
 	 */
 	public function down()
 	{
-		//
+        Schema::drop('team_users');
 	}
 
 }
