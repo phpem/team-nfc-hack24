@@ -4,7 +4,8 @@
   "dependencies": {
     "foundation": "~5.5",
     "components-font-awesome": "4.3.*",
-    "lato": "~0.2.2"
+    "lato": "~0.2.2",
+    "raty": "2.7.0"
   },
   "overrides": {
     "modernizr": {
