@@ -2,25 +2,38 @@
 
 namespace Teamnfc\Repository;
 
+use Illuminate\Database\Connection;
+use Illuminate\Database\DatabaseManager;
 use Teamnfc\Entity\CriteriaEntity;
+use Teamnfc\Entity\EntityFactory;
 
 /**
  * CriteriaRepository
  */
 final class CriteriaRepository
 {
-    private $criteria;
+    /**
+     * @var Connection
+     */
+    private $db;
 
-    public function __construct()
+    /**
+     * @param DatabaseManager $db
+     */
+    public function __construct(DatabaseManager $db)
     {
-        $this->criteria = [
-            new CriteriaEntity(1, 'Meeting planning', 1, 0, new \DateTime(), new \DateTime()),
-            new CriteriaEntity(2, 'Attendance / Punctuality', 1, 0, new \DateTime(), new \DateTime()),
-        ];
+        $this->db = $db;
     }
 
     public function getAllCriteria()
     {
-        return $this->criteria;
+        $criteria = [];
+        $result = $this->db->table('criteria')->get();
+
+        foreach ($result as $data) {
+            $criteria[] = EntityFactory::get('CriteriaEntity', (array)$data);
+        }
+
+        return $criteria;
     }
 }

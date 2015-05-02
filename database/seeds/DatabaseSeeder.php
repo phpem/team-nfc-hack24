@@ -26,16 +26,13 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('CriteriaTableSeeder');
 
-        $currentUser = 1;
-        $currentTeam = 1;
-
         for($orgCounter=1;$orgCounter <= 5;$orgCounter++)
         {
             DB::table('organisations')->insert(['org_name' => $this->faker->company, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
             for($teamCounter=1;$teamCounter <= 2; $teamCounter++)
             {
-                DB::table('teams')->insert(['team_name' => implode(' ', $this->faker->words($this->getRandNum(1, 3))), 'org_id' => $orgCounter, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+                $teamID = DB::table('teams')->insertGetId(['team_name' => implode(' ', $this->faker->words($this->getRandNum(1, 3))), 'org_id' => $orgCounter, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
                 $teamSize = $this->getRandNum(3, 20);
                 $isManager = 1;
 
@@ -43,17 +40,15 @@ class DatabaseSeeder extends Seeder {
                 {
                     $avatar = $this->getAvatar();
 
-                    DB::table('users')->insert(['email' => $this->faker->email, 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => $this->faker->firstName, 'last_name' => $this->faker->lastName, 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
-                    DB::table('team_users')->insert(['team_id' => $currentTeam, 'user_id' => $currentUser, 'is_manager' => $isManager, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+                    $userID = DB::table('users')->insertGetId(['email' => $this->faker->email, 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => $this->faker->firstName, 'last_name' => $this->faker->lastName, 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+                    DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => $isManager, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
                     // do the voting if not a manager for the team
                     if(!$isManager) {
-                        $this->insertVotes($currentUser, $currentTeam);
+                        $this->insertVotes($userID, $teamID);
                     }
                     $isManager = 0;
-                    $currentUser ++;
                 }
-                $currentTeam ++;
             }
         }
 
@@ -64,7 +59,7 @@ class DatabaseSeeder extends Seeder {
         $userID = DB::table('users')->insertGetId(['email' => 'bob.builder@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Bob', 'last_name' => 'Builder', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 1, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
-        $userID = DB::table('users')->insertGetId(['email' => 'openblue55@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Matt', 'last_name' => 'Brunt', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'openblue555@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Matt', 'last_name' => 'Brunt', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
@@ -77,7 +72,7 @@ class DatabaseSeeder extends Seeder {
         $this->insertVotes($userID, $teamID);
 
 
-        $userID = DB::table('users')->insertGetId(['email' => 'adoni@team-nfc', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Adoni', 'last_name' => 'Pavlakis', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'adoni@team-nfc.co.uk', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Adoni', 'last_name' => 'Pavlakis', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
