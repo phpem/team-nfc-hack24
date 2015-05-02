@@ -26,17 +26,16 @@ StartFile = index.php
 TimeForCGI = 20
 UseFastCGI = php5-fpm
 
-
 VirtualHost {
-Hostname = hump.local, www.hump.local
-WebsiteRoot = /srv
+Hostname = team-nfc.dev, www.team-nfc.dev
+WebsiteRoot = /srv/public
 
 EnforceFirstHostname = yes
 
 UseToolkit = sitetoolkit
 
-AccessLogFile = /srv/logs/access.log, daily
-ErrorLogFile = /srv/logs/error.log
+#AccessLogFile = /srv/logs/access.log, daily
+#ErrorLogFile = /srv/logs/error.log
 
 StartFile = index.php
 TimeForCGI = 20
