@@ -1,14 +1,19 @@
-@extends('app')
+@extends('layouts.main')
 
+@section('meta-title')
+    Register | Team NFC
+@endsection
+
+@section('page-title')
+    Register
+@endsection
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
+    <div class="row">
+        <div class="small-12 medium-8 large-6 columns medium-push-2 large-push-3">
+            <div class="panel panel--login">
+                <div class="panel__body">
 					@if (count($errors) > 0)
-						<div class="alert alert-danger">
+                        <div class="panel__alerts panel__alerts--danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
@@ -17,56 +22,33 @@
 							</ul>
 						</div>
 					@endif
+                    <div class="register">
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <form class="form form--login" role="form" method="POST" action="{{ url('/auth/register') }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
-							</div>
-						</div>
+                            <label class="form__label">Name</label>
+                            <input type="text" class="form__field" name="first_name" value="{{ old('first_name') }}" placeholder="Bill">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Last Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
-							</div>
-						</div>
+                            <label class="form__label">Last Name</label>
+                            <input type="text" class="form__field" name="last_name" value="{{ old('last_name') }}" placeholder="Gates">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+                            <label class="form__label">E-Mail Address</label>
+                            <input type="email" class="form__field" name="email" value="{{ old('email') }}" placeholder="me@email.com">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+                            <label class="form__label">Password</label>
+                            <input type="password" class="form__field" name="password" placeholder="************">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
-						</div>
+                            <label class="form__label">Confirm Password</label>
+                            <input type="password" class="form__field" name="password_confirmation" placeholder="************">
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Register
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                            <button type="submit" class="button button--success button--submit">
+                                Register
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

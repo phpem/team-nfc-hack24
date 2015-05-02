@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <title>@yield('meta-title', 'Team NFC (No fucking clue)')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#273d49">
     <link rel="stylesheet" href="{{ URL::to('/css') }}/main.min.css"/>
 </head>
 <body>
@@ -27,6 +28,9 @@
         </li>
         <li>
             <a href="{{ URL::to('/vote') }}"><i class="fa fa-check-square-o"></i></a>
+        </li>
+        <li>
+            <a href="{{ URL::to('/search') }}"><i class="fa fa-search"></i></a>
         </li>
     </ul>
 

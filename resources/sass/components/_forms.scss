@@ -1,7 +1,8 @@
 input[type=text],
 input[type=email],
 input[type=password],
-input[type=date] {
+input[type=date],
+select {
     background-color: lighten(#273d49, 10%);
     border: 0;
     font-size: 16px;
@@ -10,9 +11,29 @@ input[type=date] {
     margin-bottom: $default-padding / 2;
     font-weight: $font-weight-light;
     font-family: $main-font-family;
-
+    border-radius: 0;
+    display: inline-block;
     &:focus {
         outline: none;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../images/arrow-down-white.svg');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px 18px;
+}
+
+@-moz-document url-prefix() {
+    select {
+        background-color: lighten(#273d49, 10%);
+        -moz-appearance: none;
+        text-indent: 0.01px;
+        text-overflow: '';
     }
 }
 
