@@ -1,17 +1,21 @@
 @extends('layouts.main')
 
-@section('content')
-<div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
+@section('meta-title')
+    Dashboard | Team NFC
+@endsection
 
-				<div class="panel-body">
-					You are logged in!
-				</div>
-			</div>
-		</div>
+@section('page-title')
+    Dashboard
+@endsection
+
+@section('content')
+	<div class="row">
+        <div class="small-12 medium-4 large-3 columns">
+            <div class="panel panel--login">
+                <div class="panel__body">
+                    .
+                </div>
+            </div>
+        </div>
 	</div>
-</div>
 @endsection

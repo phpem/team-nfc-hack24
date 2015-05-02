@@ -1,0 +1,19 @@
+.action-list {
+    &__item {
+        color: $site-white;
+        display: block;
+        margin-bottom: 1px;
+        padding: 10px;
+        background-color: lighten(#273d49, 5%);
+        transition: 0.2s ease-in-out;
+        &:hover {
+            color: darken($site-white, 10%);
+            background-color: lighten(#273d49, 8%);
+        }
+        span {
+            width: 30px;
+            display: inline-block;
+            margin-left: 7px;
+        }
+    }
+}

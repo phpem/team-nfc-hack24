@@ -37,6 +37,13 @@ Route::get(
         'uses'       => 'AccountController@index'
 	]
 );
+Route::get(
+    'search',
+    [
+        'middleware' => 'auth',
+        'uses'       => 'SearchController@index'
+    ]
+);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

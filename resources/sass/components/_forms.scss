@@ -69,6 +69,41 @@ form .button--submit {
         margin-bottom: 0;
         margin-top: $default-padding;
     }
+
+    &--special {
+        margin-top: $default-padding * 2;
+        label {
+            display: none;
+        }
+        input[type=text] {
+            background: none;
+            font-size: 30px;
+            @media #{$medium-up} {
+                font-size: 60px;
+            }
+            @media #{$large-up} {
+                font-size: 80px;
+            }
+            width: 100%;
+            text-align: center;
+        }
+
+        ::-webkit-input-placeholder {
+            color: $site-white;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+            color: $site-white;
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+            color: $site-white;
+        }
+
+        :-ms-input-placeholder {
+            color: $site-white;
+        }
+    }
 }
 
 form label.checkbox {
