@@ -3,7 +3,7 @@
 	The main SASS file for the project - here's where all the components are included together and compiled.
  */
 
-@import "lib/foundation/scss/foundation/functions";
+@import "foundation/functions";
 
 
 /* 
@@ -11,32 +11,37 @@
     Add or remove them as you need.
 */
 @import
-    "lib/foundation/scss/foundation/components/buttons",
-    "lib/foundation/scss/foundation/components/grid",
-    "lib/foundation/scss/foundation/components/type",
-    "lib/foundation/scss/foundation/components/visibility";
+    "foundation/components/buttons",
+    "foundation/components/grid",
+    "foundation/components/type",
+    "foundation/components/visibility";
+
+$lato-font-path: '../fonts';
+
+@import "lato";
 
 /*
     Here are our own components.
  */
 @import "components/mixins";
-@import "components/global";
 @import "components/fonts";
+@import "components/global";
 @import "components/grid";
+@import "components/welcome";
 
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 
-@import "lib/fontawesome/variables";
-@import "lib/fontawesome/mixins";
-@import "lib/fontawesome/path";
-@import "lib/fontawesome/core";
-@import "lib/fontawesome/larger";
-@import "lib/fontawesome/fixed-width";
-@import "lib/fontawesome/list";
-@import "lib/fontawesome/bordered-pulled";
-@import "lib/fontawesome/rotated-flipped";
-@import "lib/fontawesome/stacked";
-@import "lib/fontawesome/icons";
+@import "variables";
+@import "mixins";
+@import "path";
+@import "core";
+@import "larger";
+@import "fixed-width";
+@import "list";
+@import "bordered-pulled";
+@import "rotated-flipped";
+@import "stacked";
+@import "icons";

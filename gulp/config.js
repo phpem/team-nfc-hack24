@@ -64,6 +64,7 @@ module.exports = {
             sassSourcePath,
             bowerDirectory + 'foundation/scss/',
             bowerDirectory + 'components-font-awesome/scss/',
+            bowerDirectory + 'lato/scss/'
         ],
         style: sassStyle,
         verbose: verboseMode

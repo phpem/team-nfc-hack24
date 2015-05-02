@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: Teamnfc
+        psr4_prefix: Teamnfc
         src_path: app

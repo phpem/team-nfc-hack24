@@ -1,12 +1,5 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Team NFC (No fucking clue)</title>
-    <link rel="stylesheet" href="css/main.min.css"/>
-</head>
-<body>
+@extends('layouts.main')
 
-
-    <script src="js/main.min.js"></script>
-</body>
-</html>
+@section('content')
+    <h1 class="welcome__title">Team NFC</h1>
+@endsection

@@ -1,0 +1,16 @@
+.welcome {
+    &__title {
+        @include center-both;
+        color: #fff;
+        font-size: 60px;
+        font-weight: $font-weight-light;
+        text-align: center;
+        width: 100%;
+        @media #{$medium-up} {
+            font-size: 80px;
+        }
+        @media #{$large-up} {
+            font-size: 120px;
+        }
+    }
+}

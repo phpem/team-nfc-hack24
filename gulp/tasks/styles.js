@@ -11,6 +11,10 @@ var reload = browsersync.reload;
 
 gulp.task('sass', ['styles']);
 
+if ( ! config.isDevelopment) {
+    notify = require("gulp-empty");
+}
+
 // Do things with our stylesheet
 gulp.task('styles', function () {
 

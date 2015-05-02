@@ -139,11 +139,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'Teamnfc\Providers\AppServiceProvider',
+		'Teamnfc\Providers\BusServiceProvider',
+		'Teamnfc\Providers\ConfigServiceProvider',
+		'Teamnfc\Providers\EventServiceProvider',
+		'Teamnfc\Providers\RouteServiceProvider',
 
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
