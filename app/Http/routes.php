@@ -15,8 +15,28 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::get('vote/{rating}', ['middleware' => 'auth', 'uses' => 'VoteController@rateManager']);
+Route::get(
+	'vote/{rating?}',
+	[
+        'middleware' => 'auth',
+        'uses' => 'VoteController@rateManager'
+	]
+);
 
+Route::get(
+	'dashboard',
+	[
+		'middleware' => 'auth',
+		'uses'       => 'DashboardController@index'
+	]
+);
+Route::get(
+	'account',
+	[
+		'middleware' => 'auth',
+        'uses'       => 'AccountController@index'
+	]
+);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
