@@ -4,8 +4,9 @@ set -e
 echo "Hold onto your butts"
 composer install --no-dev --verbose --prefer-dist --optimize-autoloader --no-progress
 php artisan cache:clear
-php artisan migrate --no-interaction
-php artisan db:seed --no-interaction
+#php artisan migrate --no-interaction
+#php artisan db:seed --no-interaction
+php artisan migrate:refresh --seed
 
 npm install
 bower install --no-interactive --allow-root
