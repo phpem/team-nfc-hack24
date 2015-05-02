@@ -5,6 +5,7 @@ namespace Teamnfc\Http\Controllers;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\View\View;
 use Teamnfc\Entity\TeamEntity;
+use Teamnfc\Repository\CriteriaRepository;
 use Teamnfc\Repository\Users;
 
 /**
@@ -18,11 +19,17 @@ final class VoteController extends Controller {
     private $usersRepository;
 
     /**
+     * @var CriteriaRepository
+     */
+    private $criteriaRepository;
+
+    /**
      * @param Users $usersRepository
      */
-    public function __construct(Users $usersRepository)
+    public function __construct(Users $usersRepository, CriteriaRepository $criteriaRepository)
     {
-        $this->usersRepository = $usersRepository;
+        $this->usersRepository    = $usersRepository;
+        $this->criteriaRepository = $criteriaRepository;
     }
 
     /**
@@ -31,17 +38,20 @@ final class VoteController extends Controller {
      *
      * @return View
      */
-    public function rateManager(Authenticatable $user, $rating = 0)
+    public function rateManager(Authenticatable $user, $rating = 1)
     {
-
-        $teams = $this->usersRepository->getTeamsForUser($user);
+        $teams    = $this->usersRepository->getTeamsForUser($user);
+        $criteria = $this->criteriaRepository->getAllCriteria();
+        $managers = [];
 
         return view(
             'vote/rateManager',
             [
-                'teams'  => $teams,
-                'user'   => $user,
-                'rating' => $rating
+                'teams'    => $teams,
+                'criteria' => $criteria,
+                'managers' => $managers,
+                'user'     => $user,
+                'rating'   => $rating
             ]);
     }
 }

@@ -9,7 +9,7 @@
                     <div class="panel-body">
                         <p>Hey {{ $user['first_name'] }} {{$user['last_name']}}, You are about to give the rating: {{ $rating }}</p>
 
-                        <form class="form form--login" role="form" method="POST" action="{{ url('/auth/login') }}">
+                        <form class="form form--login" role="form" method="POST" action="{{ url('/vote') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <label class="form__label">Team</label>
@@ -18,9 +18,27 @@
                                     <option value="{{$team->id}}">{{ $team->team_name }}</option>
                                 @endforeach
                             </select>
+
+                            <label class="form__label">Criteria</label>
+                            <select name="criteria" class="form-control">
+                                @foreach ($criteria as $criterion)
+                                    <option value="{{$criterion->id}}">{{ $criterion->criterion }}</option>
+                                @endforeach
+                            </select>
+
+                            <label class="form__label">Manager</label>
+                            <select name="manager" class="form-control">
+                                @foreach ($managers as $manager)
+                                    <option value="{{$manager->id}}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
+                                @endforeach
+                            </select>
+
+                            <label class="form__label">Rating</label>
+                            <input id="rating" type="text" value="{{ $rating }}" />
+
+                            <button type="submit" class="button button--success button--submit">Hell yeah, do it</button>
                         </form>
 
-                        <div class="button button--action">Hell yeah, do it</div>
                     </div>
                 </div>
             </div>
