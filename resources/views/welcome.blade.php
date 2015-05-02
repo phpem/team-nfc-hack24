@@ -12,10 +12,10 @@
     <div class="row">
         <div class="welcome__signup welcome__signup--upper clearfix">
             <div class="small-12 medium-5 large-3 columns medium-push-1 large-push-3">
-                <div class="button button--action">Register</div>
+                <a class="button button--action" href="{{ URL::to('/auth/register') }}">Register</a>
             </div>
             <div class="small-12 medium-5 large-3 columns medium-pull-1 large-pull-3">
-                <div class="button button--success">Login</div>
+                <a class="button button--success" href="{{ URL::to('/auth/login') }}">Login</a>
             </div>
         </div>
     </div>
@@ -47,10 +47,10 @@
     <div class="row">
         <div class="welcome__signup welcome__signup--lower">
             <div class="small-12 medium-4 large-3 columns medium-push-2 large-push-3">
-                <div class="button button--action">Register</div>
+                <a class="button button--action" href="{{ URL::to('/auth/register') }}">Register</a>
             </div>
             <div class="small-12 medium-4 large-3 columns medium-pull-2 large-pull-3">
-                <div class="button button--success">Login</div>
+                <a class="button button--success" href="{{ URL::to('/auth/login') }}">Login</a>
             </div>
         </div>
     </div>

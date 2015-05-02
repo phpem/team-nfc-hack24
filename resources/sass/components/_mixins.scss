@@ -30,6 +30,13 @@
     transform: translate(-50%, -50%);
 }
 
+@mixin center-horizontal {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+
 /*
     Usage
 
