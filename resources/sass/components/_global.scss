@@ -1,6 +1,41 @@
 @import "../settings/global"; // import the settings for this 'component'
 
+$site-blue: #2c3e50;
+$site-white: #ecf0f1;
+
 body {
-    background: transparent url(../images/mainbg.jpg) center center no-repeat;
+    background: transparent url(../images/blurbg.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100%;
+    color: $site-white;
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 300px;
+    color: $site-white;
+    margin-bottom: 40px;
+    font-weight: $font-weight-light;
+    a {
+        color: $site-white;
+    }
+}
+
+.footer {
+    &__team-list {
+        line-height: 1;
+        a {
+            padding: 0 10px;
+            border-right: 1px solid $site-white;
+            line-height: 1;
+            &:hover {
+                color: darken($site-white, 5%);
+                text-decoration: underline;
+            }
+            &:last-child {
+                border-right: 0;
+            }
+        }
+    }
 }

@@ -1,16 +1,42 @@
 .welcome {
     &__title {
-        @include center-both;
-        color: #fff;
+        color: $site-white;
         font-size: 60px;
         font-weight: $font-weight-light;
         text-align: center;
         width: 100%;
+
+        margin-bottom: $default-padding;
+        margin-top: $default-padding;
         @media #{$medium-up} {
+            margin-bottom: $default-padding * 2;
+            margin-top: $default-padding * 2;
             font-size: 80px;
         }
         @media #{$large-up} {
+            margin-bottom: $default-padding * 3;
+            margin-top: $default-padding * 3;
             font-size: 120px;
+        }
+    }
+    &__signup {
+        margin-top: $default-padding;
+
+        &--upper {
+            margin-bottom: $default-padding * 2;
+            @media #{$large-up} {
+                display: none;
+            }
+        }
+
+        &--lower {
+            display: none;
+            @media #{$large-up} {
+                display: block;
+            }
+        }
+        .button {
+            width: 100%;
         }
     }
 }
