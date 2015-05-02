@@ -1,0 +1,17 @@
+{
+  "name": "Front-End-Structure",
+  "version": "0.0.1",
+  "dependencies": {
+    "foundation": "~5.5",
+    "components-font-awesome": "4.3.*",
+    "lato": "~0.2.2"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": {
+        "development": "modernizr.js",
+        "production": "modernizr.js"
+      }
+    }
+  }
+}

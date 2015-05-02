@@ -1,0 +1,43 @@
+@charset "UTF-8";
+/*
+	The main SASS file for the project - here's where all the components are included together and compiled.
+ */
+
+@import "lib/foundation/scss/foundation/functions";
+
+
+/* 
+    Behold, here are all the Foundation components.
+    Add or remove them as you need.
+*/
+@import
+    "lib/foundation/scss/foundation/components/buttons",
+    "lib/foundation/scss/foundation/components/grid",
+    "lib/foundation/scss/foundation/components/type",
+    "lib/foundation/scss/foundation/components/visibility";
+
+/*
+    Here are our own components.
+ */
+@import "components/mixins";
+@import "components/global";
+@import "components/fonts";
+@import "components/grid";
+
+
+/*!
+ *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+@import "lib/fontawesome/variables";
+@import "lib/fontawesome/mixins";
+@import "lib/fontawesome/path";
+@import "lib/fontawesome/core";
+@import "lib/fontawesome/larger";
+@import "lib/fontawesome/fixed-width";
+@import "lib/fontawesome/list";
+@import "lib/fontawesome/bordered-pulled";
+@import "lib/fontawesome/rotated-flipped";
+@import "lib/fontawesome/stacked";
+@import "lib/fontawesome/icons";
