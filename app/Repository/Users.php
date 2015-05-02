@@ -5,8 +5,21 @@ namespace Teamnfc\Repository;
 
 use Teamnfc\Entity\EntityFactory;
 use Teamnfc\Entity\TeamEntity;
+use Illuminate\Database\Connection;
 
 class Users {
+
+    protected $db;
+
+    public function __construct(Connection $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getUsers()
+    {
+        return $this->db->table('users')->get();
+    }
 
     public function getTeamsForUser($user)
     {
