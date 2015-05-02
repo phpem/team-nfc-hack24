@@ -33,4 +33,15 @@ class TeamEntity extends EntityAbstract {
             $data['created_at'], $data['updated_at']
         );
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'team_name' => $this->team_name,
+            'org_id' => $this->org_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
+    }
 }
