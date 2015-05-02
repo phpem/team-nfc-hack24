@@ -14,7 +14,7 @@ class CreateTableVote extends Migration {
 	{
         Schema::create('votes', function(Blueprint $table)
         {
-            $table->increments('criteria_id');
+            $table->integer('criteria_id');
             $table->tinyInteger('score');
             $table->integer('team_id');
             $table->integer('user_id');
