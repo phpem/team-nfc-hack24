@@ -8,6 +8,9 @@ var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 var config = require('../config');
 
+if ( ! config.isDevelopment) {
+    notify = require("gulp-empty");
+}
 
 // Concat, minify and sourcemap our JS files.
 gulp.task('scripts', function () {
