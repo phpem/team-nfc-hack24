@@ -32,7 +32,10 @@ gulp.task('scripts', function () {
     }
 
     return compiledJS
-        .pipe(uglify(jsFileName, jsOptions))
+
+        .pipe(sourcemaps.init())
+            .pipe(uglify(jsFileName, jsOptions))
+        .pipe(sourcemaps.write())
         .on('error', function (err) {
             console.error('Error', err.message);
         })
