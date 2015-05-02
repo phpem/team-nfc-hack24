@@ -15,4 +15,4 @@ gulp.task('setup', ['bower']);
 
  $ gulp bower
  */
-gulp.task('bower', ['bower-files', 'bower-foundation', 'main-bower-files', 'modernizr', 'fontawesome-fonts', 'fontawesome-sass', 'lato-font']);
+gulp.task('bower', ['main-bower-files', 'modernizr', 'fontawesome-fonts', 'lato-font']);

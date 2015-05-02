@@ -19,7 +19,7 @@ gulp.task('modernizr', function () {
 // this moves font awesome fonts from where they are to the fonts directory.
 gulp.task('fontawesome-fonts', function () {
     return gulp.src(config.paths.bower + 'components-font-awesome/fonts/**')
-        .pipe(gulp.dest(config.paths.assets.fonts));
+        .pipe(gulp.dest(config.paths.output.fonts));
 });
 
 // this moves slick.css to the lib folder and renames it to scss.
@@ -32,5 +32,5 @@ gulp.task('slick-move-css', function () {
 // this moves lato fonts
 gulp.task('lato-font', function () {
     return gulp.src(config.paths.bower + 'lato/font/**')
-        .pipe(gulp.dest(config.paths.assets.fonts));
+        .pipe(gulp.dest(config.paths.output.fonts));
 });

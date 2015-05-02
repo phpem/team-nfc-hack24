@@ -16,7 +16,7 @@ gulp.task('styles', function () {
 
     var sassConfig = config.sassConfig;
     sassConfig.onError = browsersync.notify;
-
+    console.log(config.sassConfig.sourcemap);
     return sass(config.paths.assets.sass + 'main.scss', sassConfig)
         .on('error', function (err) {
             console.error('Error', err.message);
