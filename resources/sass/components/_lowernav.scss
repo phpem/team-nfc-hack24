@@ -1,0 +1,31 @@
+.lower-nav {
+    list-style-type: none;
+    bottom: 0;
+    padding: 0;
+    width: 100%;
+    background-color: darken(#273d49, 10%);
+    @include clearfix;
+    @include center-horizontal;
+    position: fixed;
+    margin: 0 auto;
+    @media #{$medium-up} {
+        width: 300px;
+    }
+    li {
+        width: 25%;
+        display: inline-block;
+        text-align: center;
+        float: left;
+        a {
+            padding: 10px;
+            color: $site-white;
+            display: block;
+            text-align: center;
+            font-size: 30px;
+            border-right: 1px solid darken(#273d49, 5%);
+        }
+        &:last-child a {
+            border-right: 0;
+        }
+    }
+}

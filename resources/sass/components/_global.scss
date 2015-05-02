@@ -15,7 +15,7 @@ footer {
     text-align: center;
     margin-top: 300px;
     color: $site-white;
-    margin-bottom: 40px;
+    padding-bottom: 100px;
     font-weight: $font-weight-light;
     a {
         color: $site-white;
@@ -28,7 +28,7 @@ footer {
         a {
             padding: 0 10px;
             border-right: 1px solid $site-white;
-            line-height: 1;
+            line-height: 2.4;
             &:hover {
                 color: darken($site-white, 5%);
                 text-decoration: underline;

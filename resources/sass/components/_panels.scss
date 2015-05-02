@@ -3,6 +3,14 @@
     background-color: lighten(#1e2f38, 5%);
     padding: $default-padding;
     margin-bottom: $default-padding;
+    &__alerts {
+        background-color: lighten(#1e2f38, 10%);
+        padding: $default-padding;
+        margin-bottom: $default-padding;
+        &--danger {
+            background-color: #995852;
+        }
+    }
     &__title {
         color: $site-white;
         font-weight: $font-weight-light;

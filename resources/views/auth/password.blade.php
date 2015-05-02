@@ -20,7 +20,7 @@
 					@endif
 
 					@if (count($errors) > 0)
-						<div class="panel__alerts panelt__alerts--danger">
+						<div class="panel__alerts panel__alerts--danger">
 							<strong>Whoops!</strong> There were some problems with your input.<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
