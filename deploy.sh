@@ -12,5 +12,5 @@ bower install --no-interactive --allow-root
 bundle install
 gulp setup
 gulp --prod
-chmod 777 storage
-chmod 777 storage/logs
+chmod 777 storage/*
+chmod 666 storage/*/*
