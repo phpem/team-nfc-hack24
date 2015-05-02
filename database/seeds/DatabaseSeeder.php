@@ -39,7 +39,14 @@ class DatabaseSeeder extends Seeder {
 
                 for($userCounter=1;$userCounter <= $teamSize;$userCounter++)
                 {
-                    DB::table('users')->insert(['email' => $faker->email, 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => $faker->firstName, 'last_name' => $faker->lastName, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+
+                    $client = new GuzzleHttp\Client();
+                    $response = $client->get('http://uifaces.com/api/v1/random');
+                    $response->getBody();
+                    $res = $response->json();
+                    $avatar = $res['image_urls']['epic'];
+
+                    DB::table('users')->insert(['email' => $faker->email, 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => $faker->firstName, 'last_name' => $faker->lastName, 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
                     DB::table('team_users')->insert(['team_id' => $currentTeam, 'user_id' => $currentUser, 'is_manager' => $isManager, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
                     // do the voting
@@ -53,7 +60,7 @@ class DatabaseSeeder extends Seeder {
 
                     $currentUser ++;
                 }
-                
+
                 $currentTeam ++;
             }
         }
