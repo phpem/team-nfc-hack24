@@ -7,6 +7,8 @@ class DatabaseSeeder extends Seeder {
 
     public $faker;
 
+    private $avatars;
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -14,6 +16,8 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+        $this->avatars = json_decode(file_get_contents(__DIR__ . '/avatars.json'), true);
+
 		Model::unguard();
         $this->faker = Faker\Factory::create();
 
@@ -90,13 +94,9 @@ class DatabaseSeeder extends Seeder {
 
     public function getAvatar()
     {
-        $client = new GuzzleHttp\Client();
-        $response = $client->get('http://uifaces.com/api/v1/random');
-        $response->getBody();
-        $res = $response->json();
-        $avatar = $res['image_urls']['epic'];
+        $index = array_rand($this->avatars, 1);
 
-        return $avatar;
+        return $this->avatars[$index];
     }
 
     public function getRandNum($min = '', $max = '')
