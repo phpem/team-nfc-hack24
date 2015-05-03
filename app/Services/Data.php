@@ -50,8 +50,12 @@ class Data {
         $votedMembersTotals = [];
         $stats = [];
 
+        $manager = $this->usersRepository->getUserById($userId);
+        if (!$manager->isManager()) {
+            return [];
+        }
         $teams = $this->usersRepository->getTeamsForUser(
-            $this->usersRepository->getUserById($userId)
+            $manager
         );
         foreach ($teams as $team) {
             $teamListTotalMembers[$team->id] = $this->teamRepository->getTotalMembersForTeam($team, false);
