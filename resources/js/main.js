@@ -163,3 +163,9 @@ $(document).ready(function() {
 $(window).resize(function() {
    evenupItems();
 });
+
+
+// ugh, highcharts...
+setTimeout(function() {
+    evenupItems();
+}, 1000);

@@ -18,7 +18,9 @@
                     </div>
                     <div class="user-list">
                         @forelse($users as $member)
-                            <a class="action-list__item" href="{{ URL::to('/profile/' . $member->id) }}">{{ $member->first_name }} {{ $member->last_name }}</a>
+                            <a class="action-list__item" href="{{ URL::to('/profile/' . $member->id) }}">
+                                <img class="action-list__item-avatar" src="{{ $member->avatar }}" alt="{{ $member->first_name }} {{ $member->last_name }}" />{{ $member->first_name }} {{ $member->last_name }}
+                            </a>
                         @empty
                         @endforelse
                     </div>

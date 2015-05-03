@@ -41,5 +41,7 @@
             $(document).foundation();
         });
     </script>
+
+    @yield('footer-scripts')
 </body>
 </html>

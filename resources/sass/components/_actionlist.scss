@@ -15,5 +15,12 @@
             display: inline-block;
             margin-left: 7px;
         }
+        &-avatar {
+            border-radius: 50%;
+            border: 1px solid #fff;
+            width: 40px;
+            margin-right: 20px;
+            margin-left: 10px;
+        }
     }
 }

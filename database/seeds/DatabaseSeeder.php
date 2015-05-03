@@ -56,23 +56,23 @@ class DatabaseSeeder extends Seeder {
         $orgID = DB::table('organisations')->insertGetId(['org_name' => 'Hack24', 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $teamID = DB::table('teams')->insertGetId(['team_name' => 'Team NFC', 'org_id' => $orgID, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
-        $userID = DB::table('users')->insertGetId(['email' => 'bob.builder@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Bob', 'last_name' => 'Builder', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'bob.builder@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Bob', 'last_name' => 'Builder', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $this->getAvatar()]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 1, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
 
-        $userID = DB::table('users')->insertGetId(['email' => 'openblue555@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Matt', 'last_name' => 'Brunt', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'openblue555@gmail.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Matt', 'last_name' => 'Brunt', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $this->getAvatar()]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
-        $userID = DB::table('users')->insertGetId(['email' => 'james@tdchodgy.co.uk', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'James', 'last_name' => 'Hodgson', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'james@tdchodgy.co.uk', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'James', 'last_name' => 'Hodgson', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $this->getAvatar()]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
-        $userID = DB::table('users')->insertGetId(['email' => 'gaz@example.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Gaz', 'last_name' => 'Jones', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'gaz@example.com', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Gaz', 'last_name' => 'Jones', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $this->getAvatar()]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
 
-        $userID = DB::table('users')->insertGetId(['email' => 'adoni@team-nfc.co.uk', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Adoni', 'last_name' => 'Pavlakis', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $avatar]);
+        $userID = DB::table('users')->insertGetId(['email' => 'adoni@team-nfc.co.uk', 'password' => '$2y$10$mxVi9r10MRaUD66RlMqmvug4WZD3ingN5RIDvQZI6AYqS37AABYWG', 'first_name' => 'Adoni', 'last_name' => 'Pavlakis', 'created_at' => new DateTime, 'updated_at' => new DateTime, 'avatar' => $this->getAvatar()]);
         DB::table('team_users')->insert(['team_id' => $teamID, 'user_id' => $userID, 'is_manager' => 0, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
         $this->insertVotes($userID, $teamID);
 
