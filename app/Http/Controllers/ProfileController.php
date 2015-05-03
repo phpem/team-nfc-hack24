@@ -3,6 +3,7 @@
 namespace Teamnfc\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Teamnfc\Repository\CriteriaRepository;
 use Teamnfc\Repository\UsersRepository;
 use Teamnfc\Services\Data;
 
@@ -20,11 +21,14 @@ final class ProfileController extends Controller
     public function __construct(Data $dataService) {
         $this->dataService = $dataService;
     }
-    public function index(UsersRepository $userRepository, $userId)
+    public function index(UsersRepository $userRepository, CriteriaRepository $criteriaRepository, $userId)
     {
+        // this whole bunch of code sucks. I'm sorry, it was last minute panicking for the profile stats.
+        // not even sure it works anyway...
         $user = $userRepository->getUserById($userId);
         $teams = $userRepository->getTeamsForUser($user);
         $data['overall'] = $this->dataService->getOverall($userId);
+
 
         $numberOfTeams = 0;
         $overallPercentage = 0;
@@ -83,12 +87,25 @@ final class ProfileController extends Controller
             $data['all']['negative'] += $information['negative'];
             $data['all']['neutral'] += $information['neutral'];
         }
+        $criteria = $criteriaRepository->getAllCriteria();
+
+        $allcriteriaScores = $this->dataService->getAverageScorePerCriteria($userId);
+
+        $criterionScores = [];
+
+        foreach($allcriteriaScores as $teamId => $teamData) {
+            foreach($teamData as $criterion => $score) {
+                $criterionScores[$criterion] = $score;
+            }
+        }
+
 
         return view('profile/index',
             [
-                'user'      =>      $user,
-                'teams'     =>      $teams,
-                'data'      =>      $data
+                'user'              =>      $user,
+                'teams'             =>      $teams,
+                'data'              =>      $data,
+                'criteriaScores'    =>      $criterionScores
             ]
         );
     }

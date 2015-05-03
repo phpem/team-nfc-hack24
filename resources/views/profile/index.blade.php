@@ -16,17 +16,17 @@
             'modifier'      =>  Teamnfc\Helpers\ValueBracketCSSModifier::get($data['overall']['percentage'])
         ])
         @include('partials.statspanel', [
-            'statsValue'    => $data['positive']['percentage'] . '%',
+            'statsValue'    => ($data['positive']['percentage'] > 100) ? 100 . '%' : $data['positive']['percentage'] . '%',
             'statsLabel'    =>  'are positive votes.',
             'modifier'      =>  Teamnfc\Helpers\ValueBracketCSSModifier::get($data['positive']['percentage'])
         ])
         @include('partials.statspanel', [
-            'statsValue'    => $data['neutral']['percentage'] . '%',
+            'statsValue'    => ($data['neutral']['percentage'] > 100) ? 100 . '%' : $data['neutral']['percentage'] . '%',
             'statsLabel'    =>  'are neutral votes.',
             'modifier'      =>  ''
         ])
         @include('partials.statspanel', [
-            'statsValue'    => $data['negative']['percentage'] . '%',
+            'statsValue'    => ($data['negative']['percentage'] > 100) ? 100 . '%' : $data['negative']['percentage'] . '%',
             'statsLabel'    =>  'are negative votes.',
             'modifier'      =>  Teamnfc\Helpers\ValueBracketCSSModifier::getInverse($data['negative']['percentage'])
         ])
@@ -69,6 +69,17 @@
                     },
                     style: {
                         color: "#fff"
+                    }
+                },
+                yAxis: {
+                    labels: {
+                        style: {
+                            color: '#fff',
+                            fontWeight: 'bold'
+                        },
+                        formatter: function () {
+                            return this.value;
+                        }
                     }
                 },
                 xAxis: {
@@ -141,25 +152,48 @@
                 },
 
                 title: {
-                    text: 'Budget vs spending',
-                    x: -80
+                    text: 'Criteria Positivity',
+                    style: {
+                        color: '#fff',
+                        font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+                    }
                 },
-
                 pane: {
                     size: '80%'
                 },
 
                 xAxis: {
-                    categories: ['Sales', 'Marketing', 'Development', 'Customer Support',
-                        'Information Technology', 'Administration'],
+                    categories: [
+                            @foreach($criteriaScores as $criterion => $score)
+                                '{{ $criterion }}',
+                            @endforeach
+                    ],
                     tickmarkPlacement: 'on',
-                    lineWidth: 0
+                    lineWidth: 0,
+                    labels: {
+                        style: {
+                            color: '#fff',
+                            fontWeight: 'bold'
+                        },
+                        formatter: function () {
+                            return this.value;
+                        }
+                    }
                 },
 
                 yAxis: {
                     gridLineInterpolation: 'polygon',
                     lineWidth: 0,
-                    min: 0
+                    min: 0,
+                    labels: {
+                        style: {
+                            color: '#fff',
+                            fontWeight: 'bold'
+                        },
+                        formatter: function () {
+                            return this.value;
+                        }
+                    }
                 },
 
                 tooltip: {
@@ -167,20 +201,13 @@
                     pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
                 },
 
-                legend: {
-                    align: 'right',
-                    verticalAlign: 'top',
-                    y: 70,
-                    layout: 'vertical'
-                },
-
                 series: [{
-                    name: 'Allocated Budget',
-                    data: [43000, 19000, 60000, 35000, 17000, 10000],
-                    pointPlacement: 'on'
-                }, {
-                    name: 'Actual Spending',
-                    data: [50000, 39000, 42000, 31000, 26000, 14000],
+                    name: '% positive',
+                    data: [
+                        @foreach($criteriaScores as $criterion => $score)
+                            {{ $score }},
+                        @endforeach
+                ],
                     pointPlacement: 'on'
                 }]
 

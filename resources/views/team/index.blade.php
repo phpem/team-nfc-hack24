@@ -18,9 +18,11 @@
                     </div>
                     <div class="user-list">
                         @forelse($users as $member)
-                            <a class="action-list__item" href="{{ URL::to('/profile/' . $member->id) }}">
-                                <img class="action-list__item-avatar" src="{{ $member->avatar }}" alt="{{ $member->first_name }} {{ $member->last_name }}" />{{ $member->first_name }} {{ $member->last_name }}
-                            </a>
+                            @if($member->id !== $manager->id)
+                                <a class="action-list__item" href="{{ URL::to('/profile/' . $member->id) }}">
+                                    <img class="action-list__item-avatar" src="{{ $member->avatar }}" alt="{{ $member->first_name }} {{ $member->last_name }}" />{{ $member->first_name }} {{ $member->last_name }}
+                                </a>
+                            @endif
                         @empty
                         @endforelse
                     </div>
