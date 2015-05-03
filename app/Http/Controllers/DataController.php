@@ -2,10 +2,7 @@
 
 namespace Teamnfc\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-//use Illuminate\Support\Facades\Request;
-//use Illuminate\Support\Facades\Route;
 use Teamnfc\Services\Data;
 
 class DataController extends Controller {
@@ -18,8 +15,6 @@ class DataController extends Controller {
     public function __construct(Data $dataService)
     {
         $this->dataService = $dataService;
-        dd(Route::current()->getParameter('userId'));
-        $this->dataService->setUserId(Request::input('userId'));
     }
 
 
@@ -35,7 +30,7 @@ class DataController extends Controller {
         );
     }
 
-    public function overall($userId, $criteria)
+    public function overall($userId, $criteria = null)
     {
         return new JsonResponse(
             $this->dataService->getOverall($userId, $criteria)

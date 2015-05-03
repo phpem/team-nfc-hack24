@@ -17,4 +17,9 @@ final class VoteRepository extends RepositoryManager
     {
         $this->db->table('votes')->insert($vote->toArray());
     }
+
+    public function getTotalMembersVoted($teamId)
+    {
+        return $this->db->table('votes')->where('team_id', '=', $teamId)->groupBy('user_id')->count();
+    }
 }
