@@ -3,33 +3,31 @@
 namespace Teamnfc\Repository;
 
 
-use Illuminate\Database\DatabaseManager;
+use Teamnfc\Repository\RepositoryManager;
 use Teamnfc\Entity\EntityFactory;
 use Teamnfc\Entity\TeamEntity;
-use Illuminate\Database\Connection;
 
 
-class Users {
 
-    /**
-     * @var Connection
-     */
-    protected $db;
-
-    public function __construct(DatabaseManager $db)
-    {
-        $this->db = $db;
-    }
+class UsersRepository extends RepositoryManager {
 
     public function getUsers()
     {
         $users =  $this->db->table('users')->get();
-        $entities = [];
-        foreach ($users as $user) {
-            $entities[] = EntityFactory::get('UserEntity', (array)$user);
-        }
 
-        return $entities;
+        return $this->getUserEntities($users);
+    }
+
+    public function getUsersForTeam($team)
+    {
+        // select u.* from users AS u INNER JOIN team_users AS tu ON tu.team_id = 3
+        $users = $this->db->table('users')
+            ->join('team_users', function($join) use ($team)
+            {
+                $join->on('team_users.team_id', '=', $team->team_id);
+            })->get();
+
+        return $this->getUserEntities($users);
     }
 
     public function getTeamsForUser($user)
@@ -54,12 +52,7 @@ class Users {
     {
         $users =  $this->db->table('users')->whereIn('id', $userIDs)->get();
 
-        $entities = [];
-        foreach ($users as $user) {
-            $entities[] = EntityFactory::get('UserEntity', (array)$user);
-        }
-
-        return $entities;
+        return $this->getUserEntities($users);
     }
 
     public function getUserById($userID)
@@ -69,4 +62,13 @@ class Users {
         return EntityFactory::get('UserEntity', (array)$user);
     }
 
+    protected function getUserEntities($users)
+    {
+        $entities = [];
+        foreach ($users as $user) {
+            $entities[] = EntityFactory::get('UserEntity', (array)$user);
+        }
+
+        return $entities;
+    }
 }

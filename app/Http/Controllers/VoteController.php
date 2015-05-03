@@ -3,13 +3,16 @@
 namespace Teamnfc\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Redirect;
 use Symfony\Component\HttpFoundation\Request;
 use Teamnfc\Entity\TeamEntity;
 use Teamnfc\Entity\VoteEntity;
 use Teamnfc\Repository\CriteriaRepository;
-use Teamnfc\Repository\Users;
+use Teamnfc\Repository\TeamRepository;
+use Teamnfc\Repository\UsersRepository;
 use Teamnfc\Repository\VoteRepository;
 
 /**
@@ -33,13 +36,19 @@ final class VoteController extends Controller {
     private $voteRepository;
 
     /**
-     * @param Users $usersRepository
+     * @var TeamRepository
      */
-    public function __construct(Users $usersRepository, CriteriaRepository $criteriaRepository, VoteRepository $voteRepository)
+    private $teamRepository;
+
+    /**
+     * @param UsersRepository $usersRepository
+     */
+    public function __construct(UsersRepository $usersRepository, CriteriaRepository $criteriaRepository, VoteRepository $voteRepository, TeamRepository $teamRepository)
     {
         $this->usersRepository    = $usersRepository;
         $this->criteriaRepository = $criteriaRepository;
         $this->voteRepository     = $voteRepository;
+        $this->teamRepository     = $teamRepository;
     }
 
     /**
@@ -52,7 +61,7 @@ final class VoteController extends Controller {
     {
         $teams    = $this->usersRepository->getTeamsForUser($user);
         $criteria = $this->criteriaRepository->getAllCriteria();
-        $managers = [];
+        $managers = $this->teamRepository->getManagerForTeam(TeamEntity::populate(['id' => $teams[0]->id]));
 
         return view(
             'vote/rateManager',
@@ -65,6 +74,11 @@ final class VoteController extends Controller {
             ]);
     }
 
+    /**
+     * @param Authenticatable $user
+     *
+     * @return RedirectResponse
+     */
     public function registerVote(Authenticatable $user) {
         $request = Request::createFromGlobals();
 
@@ -80,5 +94,28 @@ final class VoteController extends Controller {
         $this->voteRepository->save($vote);
 
         return Redirect::to('/')->with('message', 'Thanks for voting');
+    }
+
+    /**
+     * Returns a Json array of Managers for the given team Id
+     * Use to populate the Manager dropdown in the voting page
+     *
+     * @param $teamId
+     *
+     * @return JsonResponse
+     */
+    public function getManagersForTeam($teamId)
+    {
+        $managers = $this->teamRepository->getManagerForTeam(TeamEntity::populate(['id' => $teamId]));
+
+        $response = [];
+        foreach ($managers as $manager) {
+            $response[] = [
+                'id' => $manager->id,
+                'name' => $manager->first_name . ' ' . $manager->last_name
+            ];
+        }
+
+        return new JsonResponse($response);
     }
 }

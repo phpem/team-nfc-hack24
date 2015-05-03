@@ -3,11 +3,18 @@
 namespace Teamnfc\Repository;
 
 
+use Teamnfc\Entity\EntityFactory;
+
 class TeamRepository extends RepositoryManager {
 
     public function getTeamById($teamID)
     {
+        $team = $this->db->table('teams')->find($teamID);
 
+        return EntityFactory::get(
+            'TeamEntity',
+            (array)$team
+        );
     }
 
     public function getTeamByOrganisation($org)
@@ -16,6 +23,19 @@ class TeamRepository extends RepositoryManager {
     }
 
     public function getManagerForTeam($team)
+    {
+        $data =  $this->db->table('team_users')->where('team_id', $team->id)->where('is_manager', 1)->get();
+
+        $entities = [];
+        foreach ($data as $teamUser) {
+            $user = $this->db->table('users')->where('id', $teamUser->user_id)->get()[0];
+            $entities[] = EntityFactory::get('UserEntity', (array)$user);
+        }
+
+        return $entities;
+    }
+
+    public function getTotalMembersForTeam($team, $includeManager = true)
     {
 
     }

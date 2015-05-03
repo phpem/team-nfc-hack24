@@ -32,6 +32,14 @@ Route::post(
 );
 
 Route::get(
+	'vote/get-manager/{teamId}',
+	[
+		'middleware' => 'auth',
+		'uses' => 'VoteController@getManagersForTeam'
+	]
+);
+
+Route::get(
 	'dashboard',
 	[
 		'middleware' => 'auth',
@@ -51,6 +59,22 @@ Route::get(
     [
         'middleware' => 'auth',
         'uses'       => 'AccountController@teams'
+    ]
+);
+
+Route::get(
+    'team/{teamId}',
+    [
+        'middleware' => 'auth',
+        'uses'       => 'TeamController@index'
+    ]
+);
+
+Route::get(
+    'profile/{userId}',
+    [
+        'middleware' => 'auth',
+        'uses'       => 'ProfileController@index'
     ]
 );
 

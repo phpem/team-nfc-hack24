@@ -1,0 +1,18 @@
+
+.page-avatar {
+    margin: 0 auto;
+    display: block;
+    margin-top: $default-padding * 2;
+    border: 5px solid #fff;
+    box-shadow: 0 0 10px 3px #2E2E2E;
+    @media #{$medium-up} {
+        margin-top: $default-padding * 3;
+    }
+    &--circle {
+        border-radius: 50%;
+    }
+}
+
+.profile {
+
+}
