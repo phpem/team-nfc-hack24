@@ -130,6 +130,33 @@ $(document).ready(function() {
             });
         });
     });
+
+    // For the code below... I am sorry.
+    $('#star-rating').hide();
+    $('.rating-star').hover(
+        function() { // mouse over
+            $('.rating-star').removeClass('active'); // remove all active ones for now
+
+            $(this).prevAll().addClass('active'); // add class of active to all previous ones
+        },
+        function() { // mouse out
+            $('.rating-star').removeClass('active'); // remove all active ones for now
+            $('.rating-star').each(function() { // here we make sure to re-highlight the elements up to and including the one that's already been clicked.
+                if((($(this).index() + 1) <= $('#star-rating').val()) && $('#star-rating').val() != '') {
+                    $(this).prevAll().addClass('active'); // highlight all previous stars
+                    $(this).addClass('active'); // highlight current star
+                }
+            });
+        }
+    );
+    $('.rating-star').click(function() { // when we click a star
+        $('.rating-star').removeClass('active'); // remove all active stars
+        $(this).prevAll().addClass('active'); // highlight all previous stars
+        $(this).addClass('active'); // highlight current star
+        console.log(($(this).index()+1));
+        $('#star-rating').attr('value', $(this).index()+1); // update the input to the value of the star
+    });
+
 });
 
 $(window).resize(function() {
