@@ -12,7 +12,7 @@ use Teamnfc\Entity\TeamEntity;
 use Teamnfc\Entity\VoteEntity;
 use Teamnfc\Repository\CriteriaRepository;
 use Teamnfc\Repository\TeamRepository;
-use Teamnfc\Repository\Users;
+use Teamnfc\Repository\UsersRepository;
 use Teamnfc\Repository\VoteRepository;
 
 /**
@@ -41,9 +41,9 @@ final class VoteController extends Controller {
     private $teamRepository;
 
     /**
-     * @param Users $usersRepository
+     * @param UsersRepository $usersRepository
      */
-    public function __construct(Users $usersRepository, CriteriaRepository $criteriaRepository, VoteRepository $voteRepository, TeamRepository $teamRepository)
+    public function __construct(UsersRepository $usersRepository, CriteriaRepository $criteriaRepository, VoteRepository $voteRepository, TeamRepository $teamRepository)
     {
         $this->usersRepository    = $usersRepository;
         $this->criteriaRepository = $criteriaRepository;

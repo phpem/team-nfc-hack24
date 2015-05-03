@@ -9,7 +9,12 @@ class TeamRepository extends RepositoryManager {
 
     public function getTeamById($teamID)
     {
+        $team = $this->db->table('teams')->find($teamID);
 
+        return EntityFactory::get(
+            'TeamEntity',
+            (array)$team
+        );
     }
 
     public function getTeamByOrganisation($org)
@@ -28,5 +33,10 @@ class TeamRepository extends RepositoryManager {
         }
 
         return $entities;
+    }
+
+    public function getTotalMembersForTeam($team, $includeManager = true)
+    {
+
     }
 }
