@@ -108,23 +108,30 @@ Route::get(
 );
 
 Route::get(
-    'data/{userId}/positive',
+    'data/{userId}/votes/all',
     [
-        'uses' => 'DataController@positive'
+        'uses' => 'DataController@votesAll'
     ]
 );
 
 Route::get(
-    'data/{userId}/negative',
+    'data/{userId}/votes/positive',
     [
-        'uses' => 'DataController@negative'
+        'uses' => 'DataController@votesPositive'
     ]
 );
 
 Route::get(
-    'data/{userId}/neutral',
+    'data/{userId}/votes/negative',
     [
-        'uses' => 'DataController@neutral'
+        'uses' => 'DataController@votesNegative'
+    ]
+);
+
+Route::get(
+    'data/{userId}/votes/neutral',
+    [
+        'uses' => 'DataController@votesNeutral'
     ]
 );
 
