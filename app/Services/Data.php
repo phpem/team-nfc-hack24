@@ -33,8 +33,8 @@ class Data {
     public function getData($userId)
     {
         $this->getOverall($userId);
-        $this->getPositive($userId);
-        $this->getNegative($userId);
+        $this->getVotesPositive($userId);
+        $this->getVotesNegative($userId);
         $this->getRank($userId);
         $this->getMost($userId);
     }
@@ -72,7 +72,25 @@ class Data {
         return $stats;
     }
 
-    public function getPositive($userId)
+    public function getVotesAll($userId)
+    {
+        $stats = [];
+
+        $teams = $this->usersRepository->getTeamsForUser(
+            $this->usersRepository->getUserById($userId)
+        );
+        foreach ($teams as $team) {
+            $stats[$team->id]['team_name'] = $team->team_name;
+            $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
+            $stats[$team->id]['positive'] = $this->voteRepository->getTotalNumberPositive($team->id);
+            $stats[$team->id]['neutral'] = $this->voteRepository->getTotalNumberNeutral($team->id);
+            $stats[$team->id]['negative'] = $this->voteRepository->getTotalNumberNegative($team->id);
+        }
+
+        return $stats;
+    }
+
+    public function getVotesPositive($userId)
     {
         // percentage of votes that are positive
 
@@ -90,7 +108,7 @@ class Data {
         return $stats;
     }
 
-    public function getNegative($userId)
+    public function getVotesNegative($userId)
     {
         $stats = [];
 
@@ -106,7 +124,7 @@ class Data {
         return $stats;
     }
 
-    public function getNeutral($userId)
+    public function getVotesNeutral($userId)
     {
         $stats = [];
 
