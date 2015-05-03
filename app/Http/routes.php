@@ -93,6 +93,48 @@ Route::get(
     ]
 );
 
+Route::get(
+    'data/{userId}',
+    [
+        'uses' => 'DataController@user'
+    ]
+);
+
+Route::get(
+    'data/{userId}/overall/{criteria?}',
+    [
+        'uses' => 'DataController@overall'
+    ]
+);
+
+Route::get(
+    'data/{userId}/positive',
+    [
+        'uses' => 'DataController@positive'
+    ]
+);
+
+Route::get(
+    'data/{userId}/negative',
+    [
+        'uses' => 'DataController@negative'
+    ]
+);
+
+Route::get(
+    'data/{userId}/rank/{scope?}',
+    [
+        'uses' => 'DataController@rank'
+    ]
+);
+
+Route::get(
+    'data/{userId}/most/{type}',
+    [
+        'uses' => 'DataController@most'
+    ]
+);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
