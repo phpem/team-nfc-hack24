@@ -41,7 +41,7 @@ class VoteEntity extends EntityAbstract {
     public function toArray()
     {
         return [
-            'criteria_id' => $this->created_at,
+            'criteria_id' => $this->criteria_id,
             'score' => $this->score,
             'team_id' => $this->team_id,
             'user_id' => $this->user_id,
