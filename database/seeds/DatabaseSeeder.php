@@ -7,6 +7,8 @@ class DatabaseSeeder extends Seeder {
 
     public $faker;
 
+    private $avatars;
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -14,6 +16,8 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+        $this->avatars = json_decode(file_get_contents(__DIR__ . '/avatars.json'), true);
+
 		Model::unguard();
         $this->faker = Faker\Factory::create();
 
@@ -32,7 +36,7 @@ class DatabaseSeeder extends Seeder {
 
             for($teamCounter=1;$teamCounter <= 2; $teamCounter++)
             {
-                $teamID = DB::table('teams')->insertGetId(['team_name' => implode(' ', $this->faker->words($this->getRandNum(1, 3))), 'org_id' => $orgCounter, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+                $teamID = DB::table('teams')->insertGetId(['team_name' => ucwords(implode(' ', $this->faker->words($this->getRandNum(1, 3)))), 'org_id' => $orgCounter, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
                 $teamSize = $this->getRandNum(3, 20);
                 $isManager = 1;
 
@@ -90,13 +94,9 @@ class DatabaseSeeder extends Seeder {
 
     public function getAvatar()
     {
-        $client = new GuzzleHttp\Client();
-        $response = $client->get('http://uifaces.com/api/v1/random');
-        $response->getBody();
-        $res = $response->json();
-        $avatar = $res['image_urls']['epic'];
+        $index = array_rand($this->avatars, 1);
 
-        return $avatar;
+        return $this->avatars[$index];
     }
 
     public function getRandNum($min = '', $max = '')

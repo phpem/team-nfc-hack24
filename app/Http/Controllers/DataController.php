@@ -39,24 +39,31 @@ class DataController extends Controller {
         );
     }
 
-    public function positive($userId)
+    public function votesAll($userId)
     {
         return new JsonResponse(
-            $this->dataService->getPositive($userId)
+            $this->dataService->getVotesAll($userId)
         );
     }
 
-    public function negative($userId)
+    public function votesPositive($userId)
     {
         return new JsonResponse(
-            $this->dataService->getNegative($userId)
+            $this->dataService->getVotesPositive($userId)
         );
     }
 
-    public function neutral($userId)
+    public function votesNegative($userId)
     {
         return new JsonResponse(
-            $this->dataService->getNeutral($userId)
+            $this->dataService->getVotesNegative($userId)
+        );
+    }
+
+    public function votesNeutral($userId)
+    {
+        return new JsonResponse(
+            $this->dataService->getVotesNeutral($userId)
         );
     }
 
