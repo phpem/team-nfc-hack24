@@ -10,21 +10,8 @@ use Teamnfc\Entity\EntityFactory;
 /**
  * CriteriaRepository
  */
-final class CriteriaRepository
+final class CriteriaRepository extends RepositoryManager
 {
-    /**
-     * @var Connection
-     */
-    private $db;
-
-    /**
-     * @param DatabaseManager $db
-     */
-    public function __construct(DatabaseManager $db)
-    {
-        $this->db = $db;
-    }
-
     public function getAllCriteria()
     {
         $criteria = [];
