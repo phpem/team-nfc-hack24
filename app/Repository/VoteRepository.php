@@ -78,6 +78,4 @@ final class VoteRepository extends RepositoryManager
     {
         return $this->getTotalNumberVotes($teamId, "neutral", $criteriaId);
     }
-
-
 }
