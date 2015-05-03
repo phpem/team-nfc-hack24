@@ -71,5 +71,10 @@ class Team {
         return $this->manager;
     }
 
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
 
 }
