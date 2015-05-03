@@ -24,7 +24,8 @@ class UsersRepository extends RepositoryManager {
         $users = $this->db->table('users')
             ->join('team_users', function($join) use ($team)
             {
-                $join->on('team_users.team_id', '=', $team->team_id);
+                $join->on('team_users.user_id', '=', 'users.id')
+                ->where('team_users.team_id', '=', $team->id);
             })->get();
 
         return $this->getUserEntities($users);

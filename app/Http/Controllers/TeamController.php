@@ -3,6 +3,7 @@
 namespace Teamnfc\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
+use Teamnfc\Repository\TeamRepository;
 use Teamnfc\Repository\UsersRepository;
 
 /**
@@ -10,9 +11,21 @@ use Teamnfc\Repository\UsersRepository;
  */
 final class TeamController extends Controller
 {
-    public function index()
+    public function index(TeamRepository $teamRepository, UsersRepository $usersRepository, $teamId)
     {
-        return view('team/index');
+        $team = $teamRepository->getTeamById($teamId);
+        $organisation = $teamRepository->getOrganisationForTeam($team);
+        $manager = $teamRepository->getManagerForTeam($team);
+        $users = $usersRepository->getUsersForTeam($team);
+
+        return view('team/index',
+            [
+                'organisation'  =>  $organisation[0],
+                'team'          =>  $team,
+                'manager'       =>  $manager[0],
+                'users'         =>  $users
+            ]
+        );
     }
 
     public function teams(Authenticatable $user, UsersRepository $usersRepository) {

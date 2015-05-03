@@ -29,6 +29,22 @@ class TeamRepository extends RepositoryManager {
         return $entities;
     }
 
+    public function getOrganisationForTeam($team) {
+        $organisations = $this->db->table('organisations')
+            ->join('teams', function($join) use ($team)
+            {
+                $join->on('teams.org_id', '=', 'organisations.id')
+                    ->where('teams.id', '=', $team->id);
+            })->get();
+
+        $entities = [];
+        foreach ($organisations as $data) {
+            $entities[] = EntityFactory::get('OrganisationEntity', (array)$data);
+        }
+
+        return $entities;
+    }
+
     public function getManagerForTeam($team)
     {
         $data =  $this->db->table('team_users')->where('team_id', $team->id)->where('is_manager', 1)->get();

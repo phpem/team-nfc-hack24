@@ -18,6 +18,10 @@
             margin-top: $default-padding * 3;
             font-size: 120px;
         }
+        &-sub {
+            display: block;
+            font-size: 20px;
+        }
     }
     &__signup {
         margin-top: $default-padding;
