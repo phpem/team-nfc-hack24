@@ -28,6 +28,7 @@ class UserEntity extends EntityFactory
         $this->updated_at   = $updated_at;
         $this->first_name   = $fist_name;
         $this->last_name    = $last_name;
+        $this->avatar       = $avatar;
     }
 
     public static function populate(array $data = [])
@@ -35,15 +36,15 @@ class UserEntity extends EntityFactory
         $vars = [
             'id' => '', 'email' => '', 'password' => '', 'remember_token' => '',
             'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s'),
-            'first_name' => '', 'last_name' => ''
+            'first_name' => '', 'last_name' => '', 'avatar' => ''
         ];
 
         $data = array_merge($vars, $data);
 
         return new self(
             $data['id'], $data['email'], $data['password'],
-            $data['remember_token'], $data['created_at'],
-            $data['first_name'], $data['last_name']
+            $data['remember_token'], $data['created_at'], $data['updated_at'],
+            $data['first_name'], $data['last_name'], $data['avatar']
         );
     }
 
