@@ -23,6 +23,14 @@ Route::get(
 	]
 );
 
+Route::post(
+	'vote',
+	[
+		'middleware' => 'auth',
+		'uses' => 'VoteController@registerVote'
+	]
+);
+
 Route::get(
 	'dashboard',
 	[
