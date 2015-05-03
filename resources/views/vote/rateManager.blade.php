@@ -13,28 +13,28 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             <label class="form__label">Team</label>
-                            <select name="team" class="form-control">
+                            <select name="team_id" class="form-control">
                                 @foreach ($teams as $team)
                                     <option value="{{$team->id}}">{{ $team->team_name }}</option>
                                 @endforeach
                             </select>
 
                             <label class="form__label">Criteria</label>
-                            <select name="criteria" class="form-control">
+                            <select name="criteria_id" class="form-control">
                                 @foreach ($criteria as $criterion)
                                     <option value="{{$criterion->id}}">{{ $criterion->criterion }}</option>
                                 @endforeach
                             </select>
 
                             <label class="form__label">Manager</label>
-                            <select name="manager" class="form-control">
+                            <select name="manager_id" class="form-control">
                                 @foreach ($managers as $manager)
                                     <option value="{{$manager->id}}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
                                 @endforeach
                             </select>
 
                             <label class="form__label">Rating</label>
-                            <input id="rating" type="text" value="{{ $rating }}" />
+                            <input id="rating" name="rating" type="text" value="{{ $rating }}" />
 
                             <button type="submit" class="button button--success button--submit">Hell yeah, do it</button>
                         </form>
