@@ -37,4 +37,16 @@ class VoteEntity extends EntityAbstract {
             $data['updated_at']
         );
     }
+
+    public function toArray()
+    {
+        return [
+            'criteria_id' => $this->criteria_id,
+            'score' => $this->score,
+            'team_id' => $this->team_id,
+            'user_id' => $this->user_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
+    }
 }

@@ -38,4 +38,15 @@ class TeamUsersEntity extends EntityAbstract {
     {
         return (bool)$this->is_manager;
     }
+
+    public function toArray()
+    {
+        return [
+            'team_id' => $this->team_id,
+            'user_id' => $this->user_id,
+            'is_manager' => $this->is_manager,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
+    }
 }

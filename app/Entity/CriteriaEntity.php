@@ -34,4 +34,16 @@ class CriteriaEntity extends EntityAbstract {
             $data['updated_at']
         );
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'criterion' => $this->criterion,
+            'weight' => $this->weight,
+            'org_id' => $this->org_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
+    }
 }

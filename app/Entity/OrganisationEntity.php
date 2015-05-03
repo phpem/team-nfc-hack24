@@ -28,4 +28,14 @@ class OrganisationEntity extends EntityAbstract {
             $data['id'], $data['org_name'], $data['created_at'], $data['updated_at']
         );
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'org_name' => $this->org_name,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
+        ];
+    }
 }
