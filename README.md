@@ -1,23 +1,42 @@
-## Laravel PHP Framework
+# Team-NFC
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Team-NFC presents a [MidlandHR](http://www.midlandhr.com/) challenge for [Hack24!](http://www.hack24.co.uk/)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+### Vote | See | Decide
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
-## Official Documentation
+#### Vote!
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+Vote for your managers and team leaders based on a number of criteria. We use an aggregate of collaborative mindshare to score leaders based on your votes in omni-channel criteria.
 
-## Contributing
+#### See!
+Using our matrix of integrated users and synergistic data, you can see the stats on managers as part of their profile.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+#### Decide!
+Using our hyperpersonal system, you can make organic decisions on how to grow synergistic platforms and decide on your next career move.
 
-### License
+Are they worth it? 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+................................Find out!
+
+### Tools / Technologies Used
+
+* [HUMP Stack](https://github.com/pavlakis/vagrant-ansible-hump)
+* Ansible
+* Git push to deploy
+* Laravel 5
+* Faker
+* Highcharts
+* JQuery Vibrate
+* Browser-sync
+* bower
+
+### Project management
+
+* Stand up meetings
+* Sprints
+* Trello
+ 
+# The Team-NFC
+...with some of the guys from [@PHPem](https://twitter.com/phpem) ... [@tdc_hodgy](https://twitter.com/tdc_hodgy) , [@themattbrunt](https://twitter.com/themattbrunt) , [@gazj](https://twitter.com/gazj) , [@pavlakis](https://twitter.com/pavlakis)
+
