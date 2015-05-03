@@ -133,6 +133,7 @@ $(document).ready(function() {
 
     // For the code below... I am sorry.
     $('#star-rating').hide();
+    $('.rating-star').vibrate();
     $('.rating-star').hover(
         function() { // mouse over
             $('.rating-star').removeClass('active'); // remove all active ones for now

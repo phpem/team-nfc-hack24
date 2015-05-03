@@ -21,6 +21,7 @@ gulp.task('scripts', function () {
         config.paths.libraries.main + 'modernizr.min.js',
         config.paths.libraries.main + 'jquery.js',
         config.paths.libraries.main + 'foundation.js',
+        config.paths.libraries.main + 'jquery.vibrate.min.js',
         // you can add more foundation components in here as well
         // paths.libraries.full + 'foundation/js/foundation/foundation.topbar.js', // for example
         //config.paths.bower + 'foundation/js/foundation/foundation.offcanvas.js',

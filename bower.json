@@ -5,7 +5,8 @@
     "foundation": "~5.5",
     "components-font-awesome": "4.3.*",
     "lato": "~0.2.2",
-    "raty": "2.7.0"
+    "raty": "2.7.0",
+    "jquery.vibrate.js": "*"
   },
   "overrides": {
     "modernizr": {
