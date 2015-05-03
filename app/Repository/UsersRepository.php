@@ -33,20 +33,25 @@ class UsersRepository extends RepositoryManager {
 
     public function getAllTeamManagers($orgID = null)
     {
-        $users = $this->db->table('users')
-            ->join('team_users', function($join)
+        $users = $this->db->table('users');
+
+        $users->join('team_users', function($join)
             {
                 $join->on('team_users.user_id', '=', 'users.id')
                     ->where('team_users.is_manager', '=', 1);
             });
 
         if (!is_null($orgID)) {
-            $users->where('org_id', $orgID);
+            $users->join('teams', function($join) use ($orgID)
+            {
+                $join->on('teams.id', '=', 'team_users.team_id')
+                    ->where('teams.org_id', '=', $orgID);
+            });
         }
 
-        $users->get();
+        $rows = $users->get();
 
-        return $this->getUserEntities($users);
+        return $this->getUserEntities($rows);
     }
 
     public function getTeamsForUser($user)

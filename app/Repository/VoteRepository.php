@@ -28,29 +28,15 @@ final class VoteRepository extends RepositoryManager
         return $this->db->table('votes')->where('team_id', '=', $teamId)->groupBy('user_id')->count();
     }
 
-
-    public function getManagersVotedFor(array $teamManagers, $scope = 'global', $orgID = null)
+    public function getManagersVotedFor(array $teamManagers)
     {
 
         $managerIDs = [];
         foreach ($teamManagers as $manager) {
-            $managerIDs[] = $manager->id;
+            $managerIDs[] = (int)$manager->id;
         }
 
-        return $this->db->table('votes')->whereIn('user_id', $managerIDs);
-
-        // get all managers from team_users for:
-            //   org_id (if $org_id && $scope == 'global'
-            // or
-            // all
-
-//        if (!is_null($orgID) && $scope == 'organisation') {
-//
-//
-//        } else {
-//            // get ALL THE THINGS
-//        }
-
+        return $this->db->table('votes')->whereIn('user_id', $managerIDs)->get();
     }
 
     public function getTotalNumberVotes($teamId, $type = 'all', $criteriaId = null)
@@ -100,4 +86,5 @@ final class VoteRepository extends RepositoryManager
     public function getNumberVotesPerCriteria($teamId, $criteriaId) {
         return $this->db->table('votes')->where('team_id', '=', $teamId)->where('criteria_id',  '=', $criteriaId)->count();
     }
+
 }

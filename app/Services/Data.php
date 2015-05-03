@@ -137,11 +137,13 @@ class Data {
         return $stats;
     }
 
-    public function getRank($scope = "organisation", $orgId = null)
+    public function getRank($orgId = null)
     {
-        $teamManagers = $this->usersRepository->getAllTeamManagers($orgId);
 
-        $managersVotedFor = $this->voteRepository->getManagersVotedFor($teamManagers, $scope, $orgId);
+        $teamManagers = $this->usersRepository->getAllTeamManagers($orgId);
+        $managersVotedFor = $this->voteRepository->getManagersVotedFor($teamManagers);
+
+        return $managersVotedFor;
     }
 
     public function getMost($userId, $type = "positive")
