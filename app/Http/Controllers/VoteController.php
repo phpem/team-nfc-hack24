@@ -66,11 +66,12 @@ final class VoteController extends Controller {
         return view(
             'vote/rateManager',
             [
-                'teams'    => $teams,
-                'criteria' => $criteria,
-                'managers' => $managers,
-                'user'     => $user,
-                'rating'   => $rating
+                'teams'         => $teams,
+                'criteria'      => $criteria,
+                'managers'      => $managers,
+                'user'          => $user,
+                'rating'        => $rating,
+                'total-rating'  => 5 // fixme: magic number
             ]);
     }
 
@@ -93,7 +94,7 @@ final class VoteController extends Controller {
 
         $this->voteRepository->save($vote);
 
-        return Redirect::to('/')->with('message', 'Thanks for voting');
+        return Redirect::to('/dashboard')->with('message', 'Thanks for voting');
     }
 
     /**
