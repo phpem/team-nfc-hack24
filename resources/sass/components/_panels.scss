@@ -3,6 +3,9 @@
     background-color: lighten(#1e2f38, 5%);
     padding: $default-padding;
     margin-bottom: $default-padding;
+    @media #{$medium-up} {
+        margin-bottom: $default-padding * 2;
+    }
     &__lead-user {
         a {
             color: $site-white;
@@ -50,9 +53,11 @@
     }
     &__stats {
         text-align: center;
+        padding: $default-padding 0;
         &-value {
             display: block;
             font-size: 90px;
+            line-height: 1;
             @media #{$medium-up} {
                 font-size: 50px;
             }

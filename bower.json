@@ -6,7 +6,8 @@
     "components-font-awesome": "4.3.*",
     "lato": "~0.2.2",
     "raty": "2.7.0",
-    "jquery.vibrate.js": "*"
+    "jquery.vibrate.js": "*",
+    "highcharts": "~4.1.5"
   },
   "overrides": {
     "modernizr": {

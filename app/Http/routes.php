@@ -136,7 +136,7 @@ Route::get(
 );
 
 Route::get(
-    'data/{userId}/rank/{scope?}',
+    'data/{orgId}/rank/{scope?}',
     [
         'uses' => 'DataController@rank'
     ]
