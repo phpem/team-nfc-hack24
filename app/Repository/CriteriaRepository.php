@@ -36,4 +36,11 @@ final class CriteriaRepository
 
         return $criteria;
     }
+
+    public function getCriteriaForID($id)
+    {
+        $result = $this->db->table('criteria')->where('id', $id);
+        $criteria = EntityFactory::get('CriteriaEntity', $result);
+        return $criteria;
+    }
 }
