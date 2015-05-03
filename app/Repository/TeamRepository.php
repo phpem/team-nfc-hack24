@@ -24,7 +24,15 @@ class TeamRepository extends RepositoryManager {
 
     public function getManagerForTeam($team)
     {
+        $data =  $this->db->table('team_users')->where('team_id', $team->id)->where('is_manager', 1)->get();
 
+        $entities = [];
+        foreach ($data as $teamUser) {
+            $user = $this->db->table('users')->where('id', $teamUser->user_id)->get()[0];
+            $entities[] = EntityFactory::get('UserEntity', (array)$user);
+        }
+
+        return $entities;
     }
 
     public function getTotalMembersForTeam($team, $includeManager = true)

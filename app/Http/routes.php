@@ -32,6 +32,14 @@ Route::post(
 );
 
 Route::get(
+	'vote/get-manager/{teamId}',
+	[
+		'middleware' => 'auth',
+		'uses' => 'VoteController@getManagersForTeam'
+	]
+);
+
+Route::get(
 	'dashboard',
 	[
 		'middleware' => 'auth',
