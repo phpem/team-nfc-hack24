@@ -53,11 +53,19 @@ Route::get(
         'uses'       => 'AccountController@teams'
     ]
 );
+
 Route::get(
     'search',
     [
         'middleware' => 'auth',
         'uses'       => 'SearchController@index'
+    ]
+);
+
+Route::get(
+    'data',
+    [
+        'uses' => 'DataController@index'
     ]
 );
 
