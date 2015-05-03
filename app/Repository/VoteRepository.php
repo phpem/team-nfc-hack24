@@ -53,7 +53,7 @@ final class VoteRepository extends RepositoryManager
 
     }
 
-    public function getTotalNumberVotes($teamId, $type = 'positive', $criteriaId = null)
+    public function getTotalNumberVotes($teamId, $type = 'all', $criteriaId = null)
     {
         $query = $this->db->table('votes')->where('team_id', '=', $teamId);
 
@@ -67,10 +67,10 @@ final class VoteRepository extends RepositoryManager
                 $query->where('score', '>=', 4);
                 break;
             case 'neutral':
-                $query->where('score', '>=', 4);
+                $query->where('score', '=', 3);
                 break;
             case 'negative':
-                $query->where('score', '>=', 4);
+                $query->where('score', '<=', 2);
                 break;
             default:
                 break;
@@ -80,17 +80,17 @@ final class VoteRepository extends RepositoryManager
 
     public function getTotalNumberPositive($teamId, $criteriaId = null)
     {
-        return $this->db->table('votes')->where('team_id', '=', $teamId)->where('score', '>=', 4)->count();
+        return $this->getTotalNumberVotes($teamId, "positive", $criteriaId);
     }
 
     public function getTotalNumberNegative($teamId,  $criteriaId = null)
     {
-        return $this->db->table('votes')->where('team_id', '=', $teamId)->where('score', '<=', 2)->count();
+        return $this->getTotalNumberVotes($teamId, "negative", $criteriaId);
     }
 
     public function getTotalNumberNeutral($teamId, $criteriaId = null)
     {
-        return $this->db->table('votes')->where('team_id', '=', $teamId)->where('score', '=', 3)->count();
+        return $this->getTotalNumberVotes($teamId, "neutral", $criteriaId);
     }
 
 
