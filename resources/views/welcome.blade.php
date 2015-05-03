@@ -31,7 +31,7 @@
             <div class="panel" data-equalizer-watch>
                 <h1 class="panel__title">See <i class="fa fa-search"></i></h1>
 
-                <p class="panel__copy">Using our matrix of integrated users and synergistic data, you can see the stats on managers as part of their profile.</p>
+                <p class="panel__copy">Using our matrix of integrated users and synergistic data, you can see the statistics on managers as part of their online presence.</p>
             </div>
         </div>
         <div class="small-12 medium-12 large-4 columns">

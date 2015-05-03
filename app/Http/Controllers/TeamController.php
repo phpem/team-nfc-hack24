@@ -17,7 +17,7 @@ final class TeamController extends Controller
         $organisation = $teamRepository->getOrganisationForTeam($team);
         $manager = $teamRepository->getManagerForTeam($team);
         $users = $usersRepository->getUsersForTeam($team);
-        
+
         return view('team/index',
             [
                 'organisation'  =>  $organisation[0],
