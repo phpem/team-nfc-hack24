@@ -58,6 +58,18 @@ class TeamRepository extends RepositoryManager {
         return $entities;
     }
 
+
+    public function isManager($user)
+    {
+        // too late to think about it. just a hack :(
+        $isAdmin = (int)$this->db->table('team_users')->where('user_id',$user->id)->where('is_manager', '=', '1')->count();
+        if ($isAdmin === 1) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function getTotalMembersForTeam($team, $includeManager = true)
     {
         if ($includeManager) {

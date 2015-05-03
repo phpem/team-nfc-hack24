@@ -32,8 +32,10 @@ class DataController extends Controller {
 
     public function overall($userId, $criteria = null)
     {
+        $stats = $this->dataService->getOverall($userId, $criteria);
+
         return new JsonResponse(
-            $this->dataService->getOverall($userId, $criteria)
+            $stats
         );
     }
 

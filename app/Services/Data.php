@@ -41,22 +41,23 @@ class Data {
 
     public function getOverall($userId, $criteria = null)
     {
-
-        // % of team members which have voted
-            // count team members
-            // count team members who have voted
+// % of team members which have voted
+        // count team members
+        // count team members who have voted
 
         $teamListTotalMembers = [];
         $votedMembersTotals = [];
         $stats = [];
 
         $manager = $this->usersRepository->getUserById($userId);
-        if (!$manager->isManager()) {
+
+        if (!$this->teamRepository->isManager($manager)) {
             return [];
         }
         $teams = $this->usersRepository->getTeamsForUser(
             $manager
         );
+
         foreach ($teams as $team) {
             $teamListTotalMembers[$team->id] = $this->teamRepository->getTotalMembersForTeam($team, false);
             $stats[$team->id]['team_name']  = $team->team_name;
@@ -67,7 +68,6 @@ class Data {
             $votedMembersTotals[$teamId] = $this->voteRepository->getTotalMembersVoted($teamId);
             $stats[$team->id]['percentage'] = ceil(( $votedMembersTotals[$teamId] / $stats[$team->id]['total']  ) * 100) ;
         }
-
 
         return $stats;
     }
