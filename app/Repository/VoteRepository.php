@@ -37,4 +37,9 @@ final class VoteRepository extends RepositoryManager
     {
         return $this->db->table('votes')->where('team_id', '=', $teamId)->where('score', '<=', 2)->count();
     }
+
+    public function getTotalNumberNeutral($teamId)
+    {
+        return $this->db->table('votes')->where('team_id', '=', $teamId)->where('score', '=', 3)->count();
+    }
 }
