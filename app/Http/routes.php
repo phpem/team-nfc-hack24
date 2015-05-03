@@ -53,6 +53,25 @@ Route::get(
         'uses'       => 'AccountController@teams'
     ]
 );
+
+
+Route::get(
+    'team/{teamId}',
+    [
+        'middleware' => 'auth',
+        'uses'       => 'TeamController@index'
+    ]
+);
+
+Route::get(
+    'profile/{userId}',
+    [
+        'middleware' => 'auth',
+        'uses'       => 'ProfileController@index'
+    ]
+);
+
+
 Route::get(
     'search',
     [
