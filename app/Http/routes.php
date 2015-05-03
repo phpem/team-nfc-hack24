@@ -149,6 +149,14 @@ Route::get(
     ]
 );
 
+Route::get(
+    'data/{userId}/radar',
+    [
+        'uses' => 'DataController@radar'
+    ]
+);
+
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

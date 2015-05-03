@@ -81,4 +81,11 @@ class DataController extends Controller {
         );
     }
 
+    public function radar($userId)
+    {
+        return new JsonResponse(
+            $this->dataService->getRadar($userId)
+        );
+    }
+
 }
