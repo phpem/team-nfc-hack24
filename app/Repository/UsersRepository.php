@@ -9,7 +9,7 @@ use Teamnfc\Entity\TeamEntity;
 
 
 
-class Users extends RepositoryManager {
+class UsersRepository extends RepositoryManager {
 
     public function getUsers()
     {
