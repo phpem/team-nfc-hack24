@@ -10,9 +10,9 @@ use Teamnfc\Repository\Users;
  */
 final class AccountController extends Controller
 {
-    public function index()
+    public function index(Authenticatable $user)
     {
-        return view('account/index');
+        return view('account/index', ['user' => $user]);
     }
 
     public function teams(Authenticatable $user, Users $usersRepository) {

@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ URL::to('/css') }}/main.min.css"/>
 </head>
 <body>
-    @yield('page-avatar')
-    <h1 class="welcome__title">@yield('page-title')</h1>
+
+        <h1 class="welcome__title">@yield('page-avatar') @yield('page-title')</h1>
     @yield('content')
 
     <footer>
