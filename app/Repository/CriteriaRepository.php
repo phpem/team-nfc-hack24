@@ -26,7 +26,7 @@ final class CriteriaRepository extends RepositoryManager
 
     public function getCriteriaForID($id)
     {
-        $result = $this->db->table('criteria')->where('id', $id);
+        $result = $this->db->table('criteria')->where('id', $id)->get();
         $criteria = EntityFactory::get('CriteriaEntity', $result);
         return $criteria;
     }
