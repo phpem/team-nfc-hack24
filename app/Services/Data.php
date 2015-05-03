@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jamesh
- * Date: 03/05/2015
- * Time: 01:14
- */
 
 namespace Teamnfc\Services;
 
@@ -140,9 +134,11 @@ class Data {
         return $stats;
     }
 
-    public function getRank($userId, $scope = "organisation")
+    public function getRank($scope = "organisation", $orgId = null)
     {
+        $teamManagers = $this->usersRepository->getAllTeamManagers($orgId);
 
+        $managersVotedFor = $this->voteRepository->getManagersVotedFor($teamManagers, $scope, $orgId);
     }
 
     public function getMost($userId, $type = "positive")
