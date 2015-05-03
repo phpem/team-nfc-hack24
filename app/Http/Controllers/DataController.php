@@ -53,6 +53,13 @@ class DataController extends Controller {
         );
     }
 
+    public function neutral($userId)
+    {
+        return new JsonResponse(
+            $this->dataService->getNeutral($userId)
+        );
+    }
+
     public function rank($userId, $scope)
     {
         return new JsonResponse(

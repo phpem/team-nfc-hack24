@@ -122,6 +122,13 @@ Route::get(
 );
 
 Route::get(
+    'data/{userId}/neutral',
+    [
+        'uses' => 'DataController@neutral'
+    ]
+);
+
+Route::get(
     'data/{userId}/rank/{scope?}',
     [
         'uses' => 'DataController@rank'

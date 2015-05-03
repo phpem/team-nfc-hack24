@@ -74,12 +74,52 @@ class Data {
 
     public function getPositive($userId)
     {
+        // percentage of votes that are positive
 
+        $stats = [];
+
+        $teams = $this->usersRepository->getTeamsForUser(
+            $this->usersRepository->getUserById($userId)
+        );
+        foreach ($teams as $team) {
+            $stats[$team->id]['team_name'] = $team->team_name;
+            $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
+            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberPositive($team->id) / $stats[$team->id]['total']) * 100 );
+        }
+
+        return $stats;
     }
 
     public function getNegative($userId)
     {
+        $stats = [];
 
+        $teams = $this->usersRepository->getTeamsForUser(
+            $this->usersRepository->getUserById($userId)
+        );
+        foreach ($teams as $team) {
+            $stats[$team->id]['team_name'] = $team->team_name;
+            $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
+            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberNegative($team->id) / $stats[$team->id]['total']) * 100 );
+        }
+
+        return $stats;
+    }
+
+    public function getNeutral($userId)
+    {
+        $stats = [];
+
+        $teams = $this->usersRepository->getTeamsForUser(
+            $this->usersRepository->getUserById($userId)
+        );
+        foreach ($teams as $team) {
+            $stats[$team->id]['team_name'] = $team->team_name;
+            $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
+            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberNeutral($team->id) / $stats[$team->id]['total']) * 100 );
+        }
+
+        return $stats;
     }
 
     public function getRank($userId, $scope = "organisation")
