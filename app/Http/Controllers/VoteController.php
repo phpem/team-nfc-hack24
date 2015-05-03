@@ -57,7 +57,7 @@ final class VoteController extends Controller {
      *
      * @return View
      */
-    public function rateManager(Authenticatable $user, $rating = 1)
+    public function rateManager(Authenticatable $user, $rating = 4)
     {
         $teams    = $this->usersRepository->getTeamsForUser($user);
         $criteria = $this->criteriaRepository->getAllCriteria();
