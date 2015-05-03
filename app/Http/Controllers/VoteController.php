@@ -4,6 +4,7 @@ namespace Teamnfc\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\View\View;
+use Redirect;
 use Symfony\Component\HttpFoundation\Request;
 use Teamnfc\Entity\TeamEntity;
 use Teamnfc\Entity\VoteEntity;
@@ -64,20 +65,20 @@ final class VoteController extends Controller {
             ]);
     }
 
-    /**
-     * @param Request $request
-     */
-    public function registerVote(Request $request) {
+    public function registerVote(Authenticatable $user) {
+        $request = Request::createFromGlobals();
+
         $vote = new VoteEntity(
-            1,
-            5,
-            1,
-            1,
+            $request->request->get('criteria_id'),
+            $request->request->get('rating'),
+            $request->request->get('team_id'),
+            $user['id'],
             new \DateTime(),
             new \DateTime()
         );
 
         $this->voteRepository->save($vote);
-        die();
+
+        return Redirect::to('/')->with('message', 'Thanks for voting');
     }
 }
