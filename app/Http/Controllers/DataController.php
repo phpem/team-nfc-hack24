@@ -67,10 +67,10 @@ class DataController extends Controller {
         );
     }
 
-    public function rank($userId, $scope)
+    public function rank($orgId = null)
     {
         return new JsonResponse(
-            $this->dataService->getRank($userId, $scope)
+            $this->dataService->getRank($orgId)
         );
     }
 
