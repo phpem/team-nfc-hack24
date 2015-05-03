@@ -34,9 +34,9 @@ final class ProfileController extends Controller
             $numberOfTeams++;
         }
 
-        $data['overall']['percentage'] = $overallPercentage / $numberOfTeams;
+        $data['overall']['percentage'] = ($numberOfTeams > 0) ? $overallPercentage / $numberOfTeams : 0;
 
-        $data['positive'] = $this->dataService->getPositive($userId);
+        $data['positive'] = $this->dataService->getVotesPositive($userId);
 
         $numberOfTeams = 0;
         $positivePercentage = 0;
@@ -46,10 +46,21 @@ final class ProfileController extends Controller
             $numberOfTeams++;
         }
 
-        $data['positive']['percentage'] = $positivePercentage / $numberOfTeams;
+        $data['positive']['percentage'] = ($numberOfTeams > 0) ? $positivePercentage / $numberOfTeams : 0;
 
-        $data['negative'] = $this->dataService->getNegative($userId);
+        $data['neutral'] = $this->dataService->getVotesNeutral($userId);
 
+        $numberOfTeams = 0;
+        $neutralPercentage = 0;
+
+        foreach($data['neutral'] as $teamId => $information) {
+            $neutralPercentage += $information['percentage'];
+            $numberOfTeams++;
+        }
+
+        $data['neutral']['percentage'] = ($numberOfTeams > 0) ? $neutralPercentage / $numberOfTeams : 0;
+
+        $data['negative'] = $this->dataService->getVotesNegative($userId);
 
         $numberOfTeams = 0;
         $negativePercentage = 0;
@@ -59,9 +70,20 @@ final class ProfileController extends Controller
             $numberOfTeams++;
         }
 
-        $data['negative']['percentage'] = $negativePercentage / $numberOfTeams;
+        $data['negative']['percentage'] = ($numberOfTeams > 0) ? $negativePercentage / $numberOfTeams : 0;
 
-        //$data['all']    =   $this->dataService->
+        $data['all']    =   $this->dataService->getVotesAll($userId);
+
+        $data['all']['positive'] = 0;
+        $data['all']['negative'] = 0;
+        $data['all']['neutral'] = 0;
+
+        foreach($data['all'] as $teamId => $information) {
+            $data['all']['positive'] += $information['positive'];
+            $data['all']['negative'] += $information['negative'];
+            $data['all']['neutral'] += $information['neutral'];
+        }
+
         return view('profile/index',
             [
                 'user'      =>      $user,

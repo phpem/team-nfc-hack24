@@ -17,12 +17,17 @@
         ])
         @include('partials.statspanel', [
             'statsValue'    => $data['positive']['percentage'] . '%',
-            'statsLabel'    =>  'of positive votes.',
+            'statsLabel'    =>  'are positive votes.',
             'modifier'      =>  Teamnfc\Helpers\ValueBracketCSSModifier::get($data['positive']['percentage'])
         ])
         @include('partials.statspanel', [
+            'statsValue'    => $data['neutral']['percentage'] . '%',
+            'statsLabel'    =>  'are neutral votes.',
+            'modifier'      =>  ''
+        ])
+        @include('partials.statspanel', [
             'statsValue'    => $data['negative']['percentage'] . '%',
-            'statsLabel'    =>  'of negative votes.',
+            'statsLabel'    =>  'are negative votes.',
             'modifier'      =>  Teamnfc\Helpers\ValueBracketCSSModifier::getInverse($data['negative']['percentage'])
         ])
     </div>
@@ -72,11 +77,9 @@
                 },
                 series: [{
                     data: [
-                        ['Positive', 44.2],
-                        ['Neutral', 26.6],
-                        ['Negative', 20],
-                        ['Chrome', 3.1],
-                        ['Other', 5.4]
+                        ['Positive', {{ $data['all']['positive'] }}],
+                        ['Neutral', {{ $data['all']['neutral'] }}],
+                        ['Negative', {{ $data['all']['negative'] }}]
                     ]}]
             },
             // using

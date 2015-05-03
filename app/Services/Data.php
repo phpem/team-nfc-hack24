@@ -96,7 +96,8 @@ class Data {
         foreach ($teams as $team) {
             $stats[$team->id]['team_name'] = $team->team_name;
             $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
-            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberPositive($team->id) / $stats[$team->id]['total']) * 100 );
+            $total = ($stats[$team->id]['total'] > 0) ? $stats[$team->id]['total'] : 1;
+            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberPositive($team->id) / $total) * 100 );
         }
 
         return $stats;
@@ -112,7 +113,8 @@ class Data {
         foreach ($teams as $team) {
             $stats[$team->id]['team_name'] = $team->team_name;
             $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
-            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberNegative($team->id) / $stats[$team->id]['total']) * 100 );
+            $total = ($stats[$team->id]['total'] > 0) ? $stats[$team->id]['total'] : 1;
+            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberNegative($team->id) / $total) * 100 );
         }
 
         return $stats;
@@ -128,7 +130,8 @@ class Data {
         foreach ($teams as $team) {
             $stats[$team->id]['team_name'] = $team->team_name;
             $stats[$team->id]['total'] = $this->voteRepository->getTotalNumberVotes($team->id);
-            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberNeutral($team->id) / $stats[$team->id]['total']) * 100 );
+            $total = ($stats[$team->id]['total'] > 0) ? $stats[$team->id]['total'] : 1;
+            $stats[$team->id]['percentage'] = ceil(($this->voteRepository->getTotalNumberNeutral($team->id) / $total) * 100 );
         }
 
         return $stats;
