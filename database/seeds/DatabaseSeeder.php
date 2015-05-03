@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder {
 
             for($teamCounter=1;$teamCounter <= 2; $teamCounter++)
             {
-                $teamID = DB::table('teams')->insertGetId(['team_name' => implode(' ', $this->faker->words($this->getRandNum(1, 3))), 'org_id' => $orgCounter, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
+                $teamID = DB::table('teams')->insertGetId(['team_name' => ucwords(implode(' ', $this->faker->words($this->getRandNum(1, 3)))), 'org_id' => $orgCounter, 'created_at' => new DateTime, 'updated_at' => new DateTime]);
                 $teamSize = $this->getRandNum(3, 20);
                 $isManager = 1;
 
