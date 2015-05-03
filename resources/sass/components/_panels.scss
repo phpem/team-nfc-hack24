@@ -31,4 +31,27 @@
             margin-bottom: 0;
         }
     }
+    &__stats {
+        text-align: center;
+        &-value {
+            display: block;
+            font-size: 90px;
+            @media #{$medium-up} {
+
+            }
+        }
+        &-label {
+            display: block;
+            text-align: center;
+        }
+    }
+    &--positive {
+        background-color: #16a085;
+    }
+    &--borderline {
+        background-color: #C2A650;
+    }
+    &--negative {
+        background-color: #995852;
+    }
 }

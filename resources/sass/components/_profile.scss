@@ -1,12 +1,19 @@
 
 .page-avatar {
-    margin: 0 auto;
-    display: block;
-    margin-top: $default-padding * 2;
-    border: 5px solid #fff;
+    border: 2px solid #fff;
     box-shadow: 0 0 10px 3px #2E2E2E;
+    width: 50px;
+    display: block;
+    margin: $default-padding * 2 auto $default-padding;
     @media #{$medium-up} {
-        margin-top: $default-padding * 3;
+        border: 5px solid #fff;
+        display: inline-block;
+        margin-right: $default-padding * 2;
+        margin-top: -10px;
+        width: 90px;
+    }
+    @media #{$large-up} {
+        width: auto;
     }
     &--circle {
         border-radius: 50%;
