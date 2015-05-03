@@ -17,9 +17,16 @@ class TeamRepository extends RepositoryManager {
         );
     }
 
-    public function getTeamByOrganisation($org)
+    public function getTeamsByOrganisation($org)
     {
+        $teams = $this->db->table('teams')->where('org_id', $org->id);
 
+        $entities = [];
+        foreach ($teams as $data) {
+            $entities[] = EntityFactory::get('TeamEntity', (array)$data);
+        }
+
+        return $entities;
     }
 
     public function getManagerForTeam($team)
@@ -37,6 +44,10 @@ class TeamRepository extends RepositoryManager {
 
     public function getTotalMembersForTeam($team, $includeManager = true)
     {
-
+        if ($includeManager) {
+            return $this->db->table('team_users')->where('team_id',$team->id)->count();
+        } else {
+            return $this->db->table('team_users')->where('team_id',$team->id)->where('is_manager', 0)->count();
+        }
     }
 }

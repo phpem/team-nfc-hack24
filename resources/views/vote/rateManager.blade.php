@@ -20,14 +20,14 @@
                             </select>
 
                             <label class="form__label">Team</label>
-                            <select name="team_id" class="form-control">
+                            <select id="team_id" name="team_id" class="form-control">
                                 @foreach ($teams as $team)
                                     <option value="{{$team->id}}">{{ $team->team_name }}</option>
                                 @endforeach
                             </select>
 
                             <label class="form__label">Manager</label>
-                            <select name="manager_id" class="form-control">
+                            <select id="manager_id" name="manager_id" class="form-control">
                                 @foreach ($managers as $manager)
                                     <option value="{{$manager->id}}">{{ $manager->first_name }} {{ $manager->last_name }}</option>
                                 @endforeach
