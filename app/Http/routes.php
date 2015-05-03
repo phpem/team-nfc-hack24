@@ -150,9 +150,16 @@ Route::get(
 );
 
 Route::get(
-    'data/{userId}/radar',
+    'data/{userId}/radar/percent',
     [
-        'uses' => 'DataController@radar'
+        'uses' => 'DataController@getPositivePercentPerCriteria'
+    ]
+);
+
+Route::get(
+    'data/{userId}/radar/average',
+    [
+        'uses' => 'DataController@getAverageScorePerCriteria'
     ]
 );
 

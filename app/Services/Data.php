@@ -149,7 +149,7 @@ class Data {
 
     }
 
-    public function getRadar($userId)
+    public function getPositivePercentPerCriteria($userId)
     {
         $teams = $this->usersRepository->getTeamsForUser(
             $this->usersRepository->getUserById($userId)
@@ -163,6 +163,25 @@ class Data {
                 $stats[$team->id][$criterion->criterion]['total'] = $this->voteRepository->getTotalNumberVotes($team->id, "all", $criterion->id);
                 $stats[$team->id][$criterion->criterion]['positive'] = ceil(($this->voteRepository->getTotalNumberVotes($team->id, "positive", $criterion->id) / $stats[$team->id][$criterion->criterion]['total']) * 100);
 
+            }
+        }
+        return $stats;
+    }
+
+    public function getAverageScorePerCriteria($userId)
+    {
+        $teams = $this->usersRepository->getTeamsForUser(
+            $this->usersRepository->getUserById($userId)
+        );
+
+        $stats = [];
+
+        foreach ($teams as $team) {
+            $criteria = $this->criteriaRepository->getAllCriteria();
+            foreach ($criteria as $criterion) {
+                $numVotes = $this->voteRepository->getNumberVotesPerCriteria($team->id, $criterion->id);
+                $totalScore = $this->voteRepository->getTotalCriteriaScore($team->id, $criterion->id);
+                $stats[$team->id][$criterion->criterion] = ceil($totalScore / $numVotes);
             }
         }
         return $stats;

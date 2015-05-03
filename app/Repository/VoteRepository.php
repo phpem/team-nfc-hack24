@@ -93,5 +93,11 @@ final class VoteRepository extends RepositoryManager
         return $this->getTotalNumberVotes($teamId, "neutral", $criteriaId);
     }
 
+    public function getTotalCriteriaScore($teamId,  $criteriaId) {
+        return $this->db->table('votes')->where('team_id', '=', $teamId)->where('criteria_id',  '=', $criteriaId)->sum('score');
+    }
 
+    public function getNumberVotesPerCriteria($teamId, $criteriaId) {
+        return $this->db->table('votes')->where('team_id', '=', $teamId)->where('criteria_id',  '=', $criteriaId)->count();
+    }
 }

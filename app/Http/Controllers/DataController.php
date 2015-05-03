@@ -88,4 +88,18 @@ class DataController extends Controller {
         );
     }
 
+    public function getPositivePercentPerCriteria($userId)
+    {
+        return new JsonResponse(
+            $this->dataService->getPositivePercentPerCriteria($userId)
+        );
+    }
+
+    public function getAverageScorePerCriteria($userId)
+    {
+        return new JsonResponse(
+            $this->dataService->getAverageScorePerCriteria($userId)
+        );
+    }
+
 }
