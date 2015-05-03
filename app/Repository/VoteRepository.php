@@ -15,6 +15,11 @@ final class VoteRepository extends RepositoryManager
      */
     public function save(VoteEntity $vote)
     {
+        $this->db->table('votes')
+            ->where('team_id', $vote->team_id)
+            ->where('user_id', $vote->user_id)
+            ->where('criteria_id', $vote->criteria_id)->delete();
+
         $this->db->table('votes')->insert($vote->toArray());
     }
 
