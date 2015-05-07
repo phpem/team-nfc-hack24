@@ -38,7 +38,7 @@
             <div class="panel" data-equalizer-watch>
                 <h1 class="panel__title">Decide <i class="fa fa-thumbs-o-up"></i></h1>
 
-                <p class="pane__copy">Using our hyperpersonal system, you can make organic decisions on how to grow synergistic platforms and decide on your next career move.</p>
+                <p class="panel__copy">Using our hyperpersonal system, you can make organic decisions on how to grow synergistic platforms and decide on your next career move.</p>
                 <p class="panel__copy">Are they worth it? Find out!</p>
             </div>
         </div>
