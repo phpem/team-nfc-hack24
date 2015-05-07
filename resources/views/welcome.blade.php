@@ -22,7 +22,7 @@
     <div class="row" data-equalizer>
         <div class="small-12 medium-12 large-4 columns">
             <div class="panel" data-equalizer-watch>
-                <h1 class="panel__title">Rate them<i class="fa fa-check"></i></h1>
+                <h1 class="panel__title">Vote <i class="fa fa-check"></i></h1>
 
                 <p class="panel__copy">Vote for your managers and team leaders based on a number of criteria. We use an aggregate of collaborative mindshare to score leaders based on your votes in omni-channel criteria.</p>
             </div>
