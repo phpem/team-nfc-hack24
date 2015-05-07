@@ -85,20 +85,22 @@
                 {
                     // reset the row height
                     var rowHeight = 0;
+                    var sliceStart = 0;
+                    var sliceEnd = 0;
 
                     // loop through the items in this row and assign the tallest item to rowHeight
                     for(var j = 1; j <= perRow; j++)
                     {
-                        var sliceStart = (i-1)*perRow+j-1; // get the starting item for the 'row' we're in
-                        var sliceEnd = (i-1)*perRow+j; // get the last item for the 'row' we're in
+                        sliceStart = (i-1)*perRow+j-1; // get the starting item for the 'row' we're in
+                        sliceEnd = (i-1)*perRow+j; // get the last item for the 'row' we're in
 
                         thisHeight = evenupItems.slice(sliceStart, sliceEnd).height();
                         if(thisHeight > rowHeight) rowHeight = thisHeight;
                     }
 
                     // set the height of the items on this row to the tallest item
-                    var sliceStart = (i-1)*perRow; // get the starting item for the 'row' we're in
-                    var sliceEnd = (i-1)*perRow+perRow; // get the last item for the 'row' we're in
+                    sliceStart = (i-1)*perRow; // get the starting item for the 'row' we're in
+                    sliceEnd = (i-1)*perRow+perRow; // get the last item for the 'row' we're in
 
                     evenupItems.slice(sliceStart, sliceEnd).height(rowHeight);
                 }
@@ -143,7 +145,7 @@ $(document).ready(function() {
         function() { // mouse out
             $('.rating-star').removeClass('active'); // remove all active ones for now
             $('.rating-star').each(function() { // here we make sure to re-highlight the elements up to and including the one that's already been clicked.
-                if((($(this).index() + 1) <= $('#star-rating').val()) && $('#star-rating').val() != '') {
+                if((($(this).index() + 1) <= $('#star-rating').val()) && $('#star-rating').val() !== '') {
                     $(this).prevAll().addClass('active'); // highlight all previous stars
                     $(this).addClass('active'); // highlight current star
                 }
