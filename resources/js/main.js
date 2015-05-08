@@ -1,6 +1,6 @@
 /*
  Evenup:
- Author: Matt Brunt <matt@burnthebook.co.uk>
+ Author: Matt Brunt <matt@mfyu.co.uk>
  A way equalize the height of 'rows' of items responsively, that is, when the number of items per 'row' can change dynamically based on the size of the screen with your media queries.
  In the context of evenup - a 'row' is not necessarily a collection of items in a row container, it's best explained with an example:
 
