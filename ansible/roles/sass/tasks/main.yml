@@ -10,6 +10,10 @@
 - name: Symlink exists for Ruby Gems 2.0
   file: src=/usr/bin/gem2.0 dest=/usr/local/bin/gem state=link
 
+# sudo ln -s /usr/bin/nodejs /usr/bin/node
+- name: Symlink for node
+  file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+
 - name: Install bower and gulp
   shell: npm install -g bower gulp
 
