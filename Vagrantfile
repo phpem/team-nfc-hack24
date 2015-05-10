@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     
     config.vm.box_url = "https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/14.04/providers/virtualbox.box"
     
-    config.vm.network :private_network, ip: "192.168.20.30"
+    config.vm.network :private_network, ip: "192.168.20.30", auto_correct: true
     config.ssh.forward_agent = true
 
     #############################################################
@@ -42,6 +42,23 @@ Vagrant.configure("2") do |config|
             hostname: "hump"
         }
     end
+
+      # Check if vagrant-hosts-provisioner plugin is installed
+      # Install by running: vagrant plugin install vagrant-hosts-provisioner
+      if Vagrant.has_plugin?("vagrant-hosts-provisioner")
+        # Run the hostsupdate provisioner
+        config.vm.provision :hostsupdate, run: 'always' do |host|
+          # Don't include the machine hostname
+          host.hostname = false
+          # Update the guest machine
+          host.manage_guest = true
+          # Update the host machine
+          host.manage_host = true
+          host.aliases = []
+          # Pull the hosts entries from the hosts.json file
+          host.files = 'hosts.json'
+        end
+      end
     
     config.vm.synced_folder "./", "/srv/", type: "nfs"
 end
