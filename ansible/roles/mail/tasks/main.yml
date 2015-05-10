@@ -1,2 +1,6 @@
 - name: Install Mailcatcher
   shell: gem install mailcatcher
+
+  #sudo mailcatcher --ip 192.168.20.30
+- name: Point mailcatcher to current IP
+  shell: mailcatcher --ip {{ vm_ip }}

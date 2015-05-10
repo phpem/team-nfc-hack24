@@ -1,6 +1,6 @@
 ---
     php_ppa: php5-5.6
-    doc_root: /vagrant
+    doc_root: /srv
     sys_packages: [ "curl", "wget", "git", "nodejs", "npm", "libsqlite3-dev", "ruby2.0-dev"]
     dist: precise
     php_packages: ["php5-cli", "php5-mcrypt", "php5-curl","php5-common","php5-fpm","php5-intl","php5-mysql","php5-xdebug"]

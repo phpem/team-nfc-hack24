@@ -5,6 +5,7 @@
     web_server: hiawatha
     servername: hump.local www.hump.local 192.168.20.30
     timezone: UTC
+    vm_ip:  192.168.20.30
   vars_files:
     - vars/mariadb.yml
     - vars/common.yml
